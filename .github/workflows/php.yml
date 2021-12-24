@@ -29,6 +29,12 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: Run PHP-Prefixer
+      uses: PHP-Prefixer/php-prefixer-build-action@v1.0.0
+      with:
+        personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        project_id: ${{ secrets.PROJECT_ID }}
+        token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
