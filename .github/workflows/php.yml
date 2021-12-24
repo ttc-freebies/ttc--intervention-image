@@ -34,7 +34,7 @@ jobs:
       with:
         personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         project_id: ${{ secrets.PROJECT_ID }}
-        # token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
