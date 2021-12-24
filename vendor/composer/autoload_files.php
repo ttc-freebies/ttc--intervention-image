@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '7b11c4dc42b3b3023073cb14e519683c' => $vendorDir . '/ralouphie/getallheaders/src/getallheaders.php',
+    'befccbebe0d559e55cc1bb1dee02d24d' => $baseDir . '/vendor_prefixed/ralouphie/getallheaders/src/getallheaders.php',
 );
