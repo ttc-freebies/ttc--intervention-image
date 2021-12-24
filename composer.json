@@ -3,6 +3,7 @@
     "LGPL-2.1-only",
     "GPL-3.0-or-later"
   ],
+  "name": "ttc/intervention-image",
   "description": "A prefixed version of the library intervention/image",
   "require": {
     "intervention/image": "^2.7.1"
