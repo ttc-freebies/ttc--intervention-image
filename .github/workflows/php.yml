@@ -30,22 +30,22 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Copy
-      run: cp composer.json composer.bakup
+      run: cp composer.json composer.bakup &&
+           rm -rf prefixed
 
-      # - name: Run PHP-Prefixer
-      #   uses: PHP-Prefixer/php-prefixer-build-action@main
-      #   with:
-      #     personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      #     project_id: ${{ secrets.PROJECT_ID }}
-      #     token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+    - name: Run PHP-Prefixer
+      uses: PHP-Prefixer/php-prefixer-build-action@main
+      with:
+        personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        project_id: ${{ secrets.PROJECT_ID }}
+        token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
-      #  mv -r vendor_prefixed prefixed && \
     - name: Restore
-      run: rm -rf prefixed &&
-           mkdir prefixed &&
+      run: mkdir prefixed &&
            mkdir prefixed/vendor &&
            mkdir prefixed/vendor_prefixed &&
            cp -r vendor/. prefixed/vendor &&
+           cp -r vendor_prefixed/. prefixed/vendor_prefixed &&
            rm -rf vendor &&
            mv composer.json prefixed/composer.json &&
            mv composer.bakup composer.json
