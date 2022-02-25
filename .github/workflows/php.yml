@@ -42,7 +42,7 @@ jobs:
       #  mv -r vendor_prefixed prefixed && \
     - name: Restore
       run: rm -rf prefixed && mkdir prefixed && \
-           mv -r vendor prefixed && \
+           mv -r vendor/ prefixed/ && \
            mv composer.json prefixed/composer.json && \
            mv composer.bakup composer.json
 
