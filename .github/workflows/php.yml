@@ -29,9 +29,6 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Copy
-      run: cp composer.json composer.bakup && rm -rf prefixed
-
     - name: Run PHP-Prefixer
       uses: PHP-Prefixer/php-prefixer-build-action@main
       with:
@@ -40,7 +37,7 @@ jobs:
         token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
     - name: Restore
-      run: rm -rf vendor && mv composer.bakup composer.json
+      run: rm -rf vendor
 
     - uses: stefanzweifel/git-auto-commit-action@v3.0.0
       with:
