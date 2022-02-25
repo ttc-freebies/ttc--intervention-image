@@ -30,16 +30,19 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Copy
-      run: rm -rf prefixed && mkdir prefixed && cp -r original prefixed
+      run: cp composer.json composer.bakup
 
-#     - name: Run PHP-Prefixer
-#       uses: PHP-Prefixer/php-prefixer-build-action@v1.0.0
-#       with:
-#         personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-#         project_id: ${{ secrets.PROJECT_ID }}
-#         token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+      # - name: Run PHP-Prefixer
+      #   uses: PHP-Prefixer/php-prefixer-build-action@main
+      #   with:
+      #     personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      #     project_id: ${{ secrets.PROJECT_ID }}
+      #     token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
-    # - name: Run test suite
-    #   run: composer run-script test
+    - name: Restore
+      run: rm -rf prefixed && mkdir prefixed && /
+           mv -r vendor prefixed && /
+           mv -r vendor_prefixed prefixed && /
+           mv composer.json prefixed/composer.json && /
+           mv composer.bakup composer.json
+
