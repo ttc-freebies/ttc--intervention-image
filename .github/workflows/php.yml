@@ -30,7 +30,7 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Copy
-      run: cp /original/. /prefixed
+      run: cp /original /prefixed
 
 #     - name: Run PHP-Prefixer
 #       uses: PHP-Prefixer/php-prefixer-build-action@v1.0.0
