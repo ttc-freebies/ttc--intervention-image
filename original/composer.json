@@ -1,0 +1,21 @@
+{
+  "name": "ttc/intervention-image",
+  "description": "Intervention image prefixed for ttc",
+  "license": "MIT",
+  "require": {
+    "intervention/image": "^2.7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ttc\\Image\\": "src/"
+    }
+  },
+  "extra": {
+    "php-prefixer": {
+      "project-name": "Responsive Images",
+      "namespaces-prefix": "Ttc",
+      "global-scope-prefix": "Ttc_",
+      "exclude-paths": []
+    }
+  }
+}

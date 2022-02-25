@@ -36,8 +36,8 @@ class ComposerStaticInit4760c8b0bd8b89462ce6cccc0d8a5d4a
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Intervention\\Image\\' => 
         array (
