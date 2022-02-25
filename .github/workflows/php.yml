@@ -39,10 +39,10 @@ jobs:
       #     project_id: ${{ secrets.PROJECT_ID }}
       #     token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
+      #  mv -r vendor_prefixed prefixed && /
     - name: Restore
       run: rm -rf prefixed && mkdir prefixed && /
            mv -r vendor prefixed && /
-          #  mv -r vendor_prefixed prefixed && /
            mv composer.json prefixed/composer.json && /
            mv composer.bakup composer.json
 
