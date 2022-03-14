@@ -1,0 +1,23 @@
+{
+  "name": "local",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Prefixed intervention image for Ttc Library",
+  "author": "Dimitris Grammatikogiannis",
+  "main": "prefix.js",
+  "license": "MIT",
+  "scripts": {
+    "mapit": "node prefix.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttc-freebies/ttc--intervention-image.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ttc-freebies/ttc--intervention-image/issues"
+  },
+  "homepage": "https://github.com/ttc-freebies/ttc--intervention-image#readme",
+  "devDependencies": {
+    "php-parser": "^3.1.0-beta.4"
+  }
+}
