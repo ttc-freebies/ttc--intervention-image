@@ -36,14 +36,13 @@ jobs:
       run: ~/.composer/vendor/bin/rector process vendor
 
     - name: Run PHP-Prefixer
-      uses: php prefix.php
+      run: php prefix.php
 
     - name: Delete old prefixed
       run: rm -rf vendor_prefixed
 
     - name: Create prefixed
       run: mv vendor vendor_prefixed
-
 
     - uses: stefanzweifel/git-auto-commit-action@v3.0.0
       with:
