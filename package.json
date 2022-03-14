@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/ttc-freebies/ttc--intervention-image#readme",
   "devDependencies": {
-    "php-parser": "^3.1.0-beta.4"
+    "php-parser": "3.1.0-beta.4"
   }
 }
