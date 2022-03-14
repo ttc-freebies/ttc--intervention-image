@@ -2,9 +2,9 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ main ]
+    branches: [ test ]
   pull_request:
-    branches: [ main ]
+    branches: [ test ]
 
 jobs:
   build:
@@ -26,21 +26,24 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
+    - name: Install rector
+      run: composer global require rector/rector
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
     - name: Copy
-      run: cp composer.json composer.bakup && rm -rf prefixed
+      run: ~/.composer/vendor/bin/rector process vendor
 
     - name: Run PHP-Prefixer
-      uses: PHP-Prefixer/php-prefixer-build-action@main
-      with:
-        personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        project_id: ${{ secrets.PROJECT_ID }}
-        token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      uses: php prefix.php
 
-    - name: Restore
-      run: rm -rf vendor && mv composer.bakup composer.json
+    - name: Delete old prefixed
+      run: rm -rf vendor_prefixed
+
+    - name: Create prefixed
+      run: mv vendor vendor_prefixed
+
 
     - uses: stefanzweifel/git-auto-commit-action@v3.0.0
       with:
