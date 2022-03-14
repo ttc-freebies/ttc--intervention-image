@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -47,7 +47,7 @@ jobs:
     - name: Patch composer
       run: npm install && npm run mapit
 
-    - uses: stefanzweifel/git-auto-commit-action@v3.0.0
+    - uses: stefanzweifel/git-auto-commit-action@v4.13.1
       with:
         commit_message: Commit artifacts...
         branch: ${{ github.head_ref }}
