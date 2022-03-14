@@ -11,8 +11,8 @@ const parser = new engine({
   }
 });
 
-if (fs.existsSync('./vendor_prefixed/guzzlehttp/psr7/vendor-bin')) fs.rmdirSync('./vendor_prefixed/guzzlehttp/psr7/vendor-bin', { recursive: true });
-if (fs.existsSync('./vendor_prefixed/intervention/image/.github')) fs.rmdirSync('./vendor_prefixed/intervention/image/.github', { recursive: true });
+if (fs.existsSync('./vendor_prefixed/guzzlehttp/psr7/vendor-bin')) fs.rmSync('./vendor_prefixed/guzzlehttp/psr7/vendor-bin', { recursive: true });
+if (fs.existsSync('./vendor_prefixed/intervention/image/.github')) fs.rmSync('./vendor_prefixed/intervention/image/.github', { recursive: true });
 
 //vendor_prefixed/intervention/image/.github
 function getFiles(dir, files_) {
@@ -76,5 +76,4 @@ return array(
 );
 `;
 
-  console.log(text);
-// console.dir(getFiles('vendor_prefixed'))
+fs.writeFileSync('./vendor_prefixed/autoload_classmap.php', text);
