@@ -5,9 +5,9 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c7f6bbfa98c2e6f9256864a0b06a8df48f8219f4',
+        'reference' => '049c881185bf473c4d4a2b2beff3f5d33c99e94f',
         'name' => 'ttc/intervention-image',
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'guzzlehttp/psr7' => array(
@@ -73,7 +73,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c7f6bbfa98c2e6f9256864a0b06a8df48f8219f4',
+            'reference' => '049c881185bf473c4d4a2b2beff3f5d33c99e94f',
             'dev_requirement' => false,
         ),
     ),
