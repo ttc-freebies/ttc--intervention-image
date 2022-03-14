@@ -76,4 +76,4 @@ return array(
 );
 `;
 
-fs.writeFileSync('./vendor_prefixed/autoload_classmap.php', text);
+fs.writeFileSync('./vendor_prefixed/composer/autoload_classmap.php', text);
