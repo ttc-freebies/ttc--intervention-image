@@ -42,18 +42,41 @@ allPHPFiles.forEach(function(file) {
     return;
   }
 
-  const fileAST = parser.parseCode(fs.readFileSync(file));
-  if (
-    fileAST
-    && fileAST.children
-    && fileAST.children.length > 0
-    && fileAST.children[0].kind === 'namespace'
-    && !['Composer\\Autoload', 'Composer', ].includes(fileAST.children[0].name)
-    && !collection.includes(fileAST.children[0].name)
-    ) {
-      collection.push({ [fileAST.children[0].name]: `$baseDir . '${file.replace('./', '/')}'` })
-  }
+  if (file.endsWith('.php')) {
+    // Patch some files
+    // sprintf('Ttc\Intervention\\Image\\%s\\Driver', $drivername);
+    // $classnameLocal = sprintf('\Ttc\Intervention\Image\%s\Commands\%sCommand', $drivername, ucfirst($name));
+    // $classnameGlobal = sprintf('\Ttc\Intervention\Image\Commands\%sCommand', ucfirst($name));
+    let fileContent = fs.readFileSync(file, 'utf8');
+    if (
+      /Intervention\\\\Image\\\\%s\\\\Driver/.test(fileContent) ||
+      /Intervention\\Image\\%s\\Commands\\%sCommand/.test(fileContent)
 
+      // fileContent.includes('Intervention\\Image\\%s\\Driver') ||
+      // fileContent.includes('\Intervention\Image\%s\Commands\%sCommand') ||
+      // fileContent.includes('\Intervention\Image\Commands\%sCommand')
+     ) {
+       console.log('hey')
+      fileContent = fileContent.replace(/'Intervention\\\\Image\\\\%s\\\\Driver'/gm, "'Ttc\\\\Intervention\\\\Image\\\\%s\\\\Driver'");
+      fileContent = fileContent.replace(/'\\Intervention\\Image\\%s\\Commands\\%sCommand'/gm, "'\\Ttc\\Intervention\\Image\\%s\\Commands\\%sCommand'");
+      fileContent = fileContent.replace(/'\\Intervention\\Image\\Commands\\%sCommand'/gm, "'\\Ttc\\Intervention\\Image\\Commands\\%sCommand'");
+
+      fs.writeFileSync(file, fileContent, 'utf8');
+     }
+
+
+    const fileAST = parser.parseCode(fs.readFileSync(file));
+    if (
+      fileAST
+      && fileAST.children
+      && fileAST.children.length > 0
+      && fileAST.children[0].kind === 'namespace'
+      && !['Composer\\Autoload', 'Composer', ].includes(fileAST.children[0].name)
+      && !collection.includes(fileAST.children[0].name)
+      ) {
+        collection.push({ [fileAST.children[0].name]: file.replace('./', '/') })
+    }
+  }
 });
 
 let text = `
@@ -68,7 +91,7 @@ return array(
   'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 `;
   collection.forEach(name => {
-  text += `  '${Object.keys(name)[0]}' => '${Object.values(name)[0]}',
+  text += `  '${Object.keys(name)[0]}' => $vendorDir . '${Object.values(name)[0]}',
 `;
   });
 
