@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Gd\Color;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Gd\Color;
 
-class PixelCommand extends AbstractCommand
+class PixelCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Draws one pixel to a given image
@@ -16,7 +16,7 @@ class PixelCommand extends AbstractCommand
     public function execute($image)
     {
         $color = $this->argument(0)->required()->value();
-        $color = new Color($color);
+        $color = new \Ttc\Intervention\Image\Gd\Color($color);
         $x = $this->argument(1)->type('digit')->required()->value();
         $y = $this->argument(2)->type('digit')->required()->value();
 

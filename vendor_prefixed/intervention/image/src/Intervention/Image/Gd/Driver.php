@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Gd;
+namespace Ttc\Intervention\Image\Gd;
 
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Image;
 
-class Driver extends \Intervention\Image\AbstractDriver
+class Driver extends \Ttc\Intervention\Image\AbstractDriver
 {
     /**
      * Creates new instance of driver
@@ -13,16 +13,16 @@ class Driver extends \Intervention\Image\AbstractDriver
      * @param Decoder $decoder
      * @param Encoder $encoder
      */
-    public function __construct(Decoder $decoder = null, Encoder $encoder = null)
+    public function __construct(\Ttc\Intervention\Image\Gd\Decoder $decoder = null, \Ttc\Intervention\Image\Gd\Encoder $encoder = null)
     {
         if ( ! $this->coreAvailable()) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "GD Library extension not available with this PHP installation."
             );
         }
 
-        $this->decoder = $decoder ? $decoder : new Decoder;
-        $this->encoder = $encoder ? $encoder : new Encoder;
+        $this->decoder = $decoder ? $decoder : new \Ttc\Intervention\Image\Gd\Decoder;
+        $this->encoder = $encoder ? $encoder : new \Ttc\Intervention\Image\Gd\Encoder;
     }
 
     /**
@@ -37,10 +37,10 @@ class Driver extends \Intervention\Image\AbstractDriver
     {
         // create empty resource
         $core = imagecreatetruecolor($width, $height);
-        $image = new Image(new static, $core);
+        $image = new \Ttc\Intervention\Image\Image(new static, $core);
 
         // set background color
-        $background = new Color($background);
+        $background = new \Ttc\Intervention\Image\Gd\Color($background);
         imagefill($image->getCore(), 0, 0, $background->getInt());
 
         return $image;
@@ -54,7 +54,7 @@ class Driver extends \Intervention\Image\AbstractDriver
      */
     public function parseColor($value)
     {
-        return new Color($value);
+        return new \Ttc\Intervention\Image\Gd\Color($value);
     }
 
     /**

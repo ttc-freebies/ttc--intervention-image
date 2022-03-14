@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Imagick\Color;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Imagick\Color;
 
-class TrimCommand extends AbstractCommand
+class TrimCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Trims away parts of an image
@@ -62,7 +62,7 @@ class TrimCommand extends AbstractCommand
 
         // pick base color
         if ($checkTransparency) {
-            $base_color = new Color; // color will only be used to compare alpha channel
+            $base_color = new \Ttc\Intervention\Image\Imagick\Color; // color will only be used to compare alpha channel
         } else {
             $base_color = $image->pickColor($base_x, $base_y, 'object');
         }

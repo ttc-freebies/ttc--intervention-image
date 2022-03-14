@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Lazily reads or writes to a file that is opened only after an IO operation
  * take place on the stream.
  */
-final class LazyOpenStream implements StreamInterface
+final class LazyOpenStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
-    use StreamDecoratorTrait;
+    use \Ttc\GuzzleHttp\Psr7\StreamDecoratorTrait;
 
     /** @var string */
     private $filename;
@@ -33,8 +33,8 @@ final class LazyOpenStream implements StreamInterface
     /**
      * Creates the underlying stream lazily when required.
      */
-    protected function createStream(): StreamInterface
+    protected function createStream(): \Ttc\Psr\Http\Message\StreamInterface
     {
-        return Utils::streamFor(Utils::tryFopen($this->filename, $this->mode));
+        return \Ttc\GuzzleHttp\Psr7\Utils::streamFor(\Ttc\GuzzleHttp\Psr7\Utils::tryFopen($this->filename, $this->mode));
     }
 }

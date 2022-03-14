@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Ttc\Intervention\Image\Imagick;
 
-use Intervention\Image\AbstractFont;
-use Intervention\Image\Exception\RuntimeException;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\AbstractFont;
+use Ttc\Intervention\Image\Exception\RuntimeException;
+use Ttc\Intervention\Image\Image;
 
-class Font extends AbstractFont
+class Font extends \Ttc\Intervention\Image\AbstractFont
 {
     /**
      * Draws font to given image at given position
@@ -16,7 +16,7 @@ class Font extends AbstractFont
      * @param  int     $posy
      * @return void
      */
-    public function applyToImage(Image $image, $posx = 0, $posy = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $posx = 0, $posy = 0)
     {
         // build draw object
         $draw = new \ImagickDraw();
@@ -27,13 +27,13 @@ class Font extends AbstractFont
         if ($this->hasApplicableFontFile()) {
             $draw->setFont($this->file);
         } else {
-            throw new RuntimeException(
+            throw new \Ttc\Intervention\Image\Exception\RuntimeException(
                 "Font file must be provided to apply text to image."
             );
         }
 
         // parse text color
-        $color = new Color($this->color);
+        $color = new \Ttc\Intervention\Image\Imagick\Color($this->color);
 
         $draw->setFontSize($this->size);
         $draw->setFillColor($color->getPixel());
@@ -98,7 +98,7 @@ class Font extends AbstractFont
         if ($this->hasApplicableFontFile()) {
             $draw->setFont($this->file);
         } else {
-            throw new RuntimeException(
+            throw new \Ttc\Intervention\Image\Exception\RuntimeException(
                 "Font file must be provided to apply text to image."
             );
         }

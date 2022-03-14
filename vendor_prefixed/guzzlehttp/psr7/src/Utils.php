@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UriInterface;
+use Ttc\Psr\Http\Message\RequestInterface;
+use Ttc\Psr\Http\Message\ServerRequestInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\UriInterface;
 
 final class Utils
 {
@@ -44,7 +44,7 @@ final class Utils
      *
      * @throws \RuntimeException on error.
      */
-    public static function copyToStream(StreamInterface $source, StreamInterface $dest, int $maxLen = -1): void
+    public static function copyToStream(\Ttc\Psr\Http\Message\StreamInterface $source, \Ttc\Psr\Http\Message\StreamInterface $dest, int $maxLen = -1): void
     {
         $bufferSize = 8192;
 
@@ -78,7 +78,7 @@ final class Utils
      *
      * @throws \RuntimeException on error.
      */
-    public static function copyToString(StreamInterface $stream, int $maxLen = -1): string
+    public static function copyToString(\Ttc\Psr\Http\Message\StreamInterface $stream, int $maxLen = -1): string
     {
         $buffer = '';
 
@@ -118,7 +118,7 @@ final class Utils
      *
      * @throws \RuntimeException on error.
      */
-    public static function hash(StreamInterface $stream, string $algo, bool $rawOutput = false): string
+    public static function hash(\Ttc\Psr\Http\Message\StreamInterface $stream, string $algo, bool $rawOutput = false): string
     {
         $pos = $stream->tell();
 
@@ -155,7 +155,7 @@ final class Utils
      * @param RequestInterface $request Request to clone and modify.
      * @param array            $changes Changes to apply.
      */
-    public static function modifyRequest(RequestInterface $request, array $changes): RequestInterface
+    public static function modifyRequest(\Ttc\Psr\Http\Message\RequestInterface $request, array $changes): \Ttc\Psr\Http\Message\RequestInterface
     {
         if (!$changes) {
             return $request;
@@ -194,8 +194,8 @@ final class Utils
             $uri = $uri->withQuery($changes['query']);
         }
 
-        if ($request instanceof ServerRequestInterface) {
-            $new = (new ServerRequest(
+        if ($request instanceof \Ttc\Psr\Http\Message\ServerRequestInterface) {
+            $new = (new \Ttc\GuzzleHttp\Psr7\ServerRequest(
                 $changes['method'] ?? $request->getMethod(),
                 $uri,
                 $headers,
@@ -215,7 +215,7 @@ final class Utils
             return $new;
         }
 
-        return new Request(
+        return new \Ttc\GuzzleHttp\Psr7\Request(
             $changes['method'] ?? $request->getMethod(),
             $uri,
             $headers,
@@ -230,7 +230,7 @@ final class Utils
      * @param StreamInterface $stream    Stream to read from
      * @param int|null        $maxLength Maximum buffer length
      */
-    public static function readLine(StreamInterface $stream, ?int $maxLength = null): string
+    public static function readLine(\Ttc\Psr\Http\Message\StreamInterface $stream, ?int $maxLength = null): string
     {
         $buffer = '';
         $size = 0;
@@ -283,7 +283,7 @@ final class Utils
      *
      * @throws \InvalidArgumentException if the $resource arg is not valid.
      */
-    public static function streamFor($resource = '', array $options = []): StreamInterface
+    public static function streamFor($resource = '', array $options = []): \Ttc\Psr\Http\Message\StreamInterface
     {
         if (is_scalar($resource)) {
             $stream = self::tryFopen('php://temp', 'r+');
@@ -291,7 +291,7 @@ final class Utils
                 fwrite($stream, (string) $resource);
                 fseek($stream, 0);
             }
-            return new Stream($stream, $options);
+            return new \Ttc\GuzzleHttp\Psr7\Stream($stream, $options);
         }
 
         switch (gettype($resource)) {
@@ -308,13 +308,13 @@ final class Utils
                     fseek($stream, 0);
                     $resource = $stream;
                 }
-                return new Stream($resource, $options);
+                return new \Ttc\GuzzleHttp\Psr7\Stream($resource, $options);
             case 'object':
                 /** @var object $resource */
-                if ($resource instanceof StreamInterface) {
+                if ($resource instanceof \Ttc\Psr\Http\Message\StreamInterface) {
                     return $resource;
                 } elseif ($resource instanceof \Iterator) {
-                    return new PumpStream(function () use ($resource) {
+                    return new \Ttc\GuzzleHttp\Psr7\PumpStream(function () use ($resource) {
                         if (!$resource->valid()) {
                             return false;
                         }
@@ -327,11 +327,11 @@ final class Utils
                 }
                 break;
             case 'NULL':
-                return new Stream(self::tryFopen('php://temp', 'r+'), $options);
+                return new \Ttc\GuzzleHttp\Psr7\Stream(self::tryFopen('php://temp', 'r+'), $options);
         }
 
         if (is_callable($resource)) {
-            return new PumpStream($resource, $options);
+            return new \Ttc\GuzzleHttp\Psr7\PumpStream($resource, $options);
         }
 
         throw new \InvalidArgumentException('Invalid resource type: ' . gettype($resource));
@@ -397,14 +397,14 @@ final class Utils
      *
      * @throws \InvalidArgumentException
      */
-    public static function uriFor($uri): UriInterface
+    public static function uriFor($uri): \Ttc\Psr\Http\Message\UriInterface
     {
-        if ($uri instanceof UriInterface) {
+        if ($uri instanceof \Ttc\Psr\Http\Message\UriInterface) {
             return $uri;
         }
 
         if (is_string($uri)) {
-            return new Uri($uri);
+            return new \Ttc\GuzzleHttp\Psr7\Uri($uri);
         }
 
         throw new \InvalidArgumentException('URI must be a string or UriInterface');

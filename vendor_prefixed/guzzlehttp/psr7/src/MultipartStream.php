@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Stream that when read returns bytes for a streaming multipart or
  * multipart/form-data stream.
  */
-final class MultipartStream implements StreamInterface
+final class MultipartStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
-    use StreamDecoratorTrait;
+    use \Ttc\GuzzleHttp\Psr7\StreamDecoratorTrait;
 
     /** @var string */
     private $boundary;
@@ -63,21 +63,21 @@ final class MultipartStream implements StreamInterface
     /**
      * Create the aggregate stream that will be used to upload the POST data
      */
-    protected function createStream(array $elements = []): StreamInterface
+    protected function createStream(array $elements = []): \Ttc\Psr\Http\Message\StreamInterface
     {
-        $stream = new AppendStream();
+        $stream = new \Ttc\GuzzleHttp\Psr7\AppendStream();
 
         foreach ($elements as $element) {
             $this->addElement($stream, $element);
         }
 
         // Add the trailing boundary with CRLF
-        $stream->addStream(Utils::streamFor("--{$this->boundary}--\r\n"));
+        $stream->addStream(\Ttc\GuzzleHttp\Psr7\Utils::streamFor("--{$this->boundary}--\r\n"));
 
         return $stream;
     }
 
-    private function addElement(AppendStream $stream, array $element): void
+    private function addElement(\Ttc\GuzzleHttp\Psr7\AppendStream $stream, array $element): void
     {
         foreach (['contents', 'name'] as $key) {
             if (!array_key_exists($key, $element)) {
@@ -85,7 +85,7 @@ final class MultipartStream implements StreamInterface
             }
         }
 
-        $element['contents'] = Utils::streamFor($element['contents']);
+        $element['contents'] = \Ttc\GuzzleHttp\Psr7\Utils::streamFor($element['contents']);
 
         if (empty($element['filename'])) {
             $uri = $element['contents']->getMetadata('uri');
@@ -101,12 +101,12 @@ final class MultipartStream implements StreamInterface
             $element['headers'] ?? []
         );
 
-        $stream->addStream(Utils::streamFor($this->getHeaders($headers)));
+        $stream->addStream(\Ttc\GuzzleHttp\Psr7\Utils::streamFor($this->getHeaders($headers)));
         $stream->addStream($body);
-        $stream->addStream(Utils::streamFor("\r\n"));
+        $stream->addStream(\Ttc\GuzzleHttp\Psr7\Utils::streamFor("\r\n"));
     }
 
-    private function createElement(string $name, StreamInterface $stream, ?string $filename, array $headers): array
+    private function createElement(string $name, \Ttc\Psr\Http\Message\StreamInterface $stream, ?string $filename, array $headers): array
     {
         // Set a default content-disposition header if one was no provided
         $disposition = $this->getHeader($headers, 'content-disposition');
@@ -131,7 +131,7 @@ final class MultipartStream implements StreamInterface
         // Set a default Content-Type if one was not supplied
         $type = $this->getHeader($headers, 'content-type');
         if (!$type && ($filename === '0' || $filename)) {
-            if ($type = MimeType::fromFilename($filename)) {
+            if ($type = \Ttc\GuzzleHttp\Psr7\MimeType::fromFilename($filename)) {
                 $headers['Content-Type'] = $type;
             }
         }

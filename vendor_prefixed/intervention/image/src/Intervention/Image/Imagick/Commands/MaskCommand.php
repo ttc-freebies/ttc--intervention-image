@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class MaskCommand extends AbstractCommand
+class MaskCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Applies an alpha mask to an image

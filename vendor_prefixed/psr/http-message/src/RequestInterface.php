@@ -1,6 +1,6 @@
 <?php
 
-namespace Psr\Http\Message;
+namespace Ttc\Psr\Http\Message;
 
 /**
  * Representation of an outgoing, client-side request.
@@ -21,7 +21,7 @@ namespace Psr\Http\Message;
  * be implemented such that they retain the internal state of the current
  * message and return an instance that contains the changed state.
  */
-interface RequestInterface extends MessageInterface
+interface RequestInterface extends \Ttc\Psr\Http\Message\MessageInterface
 {
     /**
      * Retrieves the message's request target.
@@ -125,5 +125,5 @@ interface RequestInterface extends MessageInterface
      * @param bool $preserveHost Preserve the original state of the Host header.
      * @return static
      */
-    public function withUri(UriInterface $uri, $preserveHost = false);
+    public function withUri(\Ttc\Psr\Http\Message\UriInterface $uri, $preserveHost = false);
 }

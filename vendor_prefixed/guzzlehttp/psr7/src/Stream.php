@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * PHP stream implementation.
  */
-class Stream implements StreamInterface
+class Stream implements \Ttc\Psr\Http\Message\StreamInterface
 {
     /**
      * @see http://php.net/manual/function.fopen.php

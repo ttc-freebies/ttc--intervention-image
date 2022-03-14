@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Compose stream implementations based on a hash of functions.
@@ -12,7 +12,7 @@ use Psr\Http\Message\StreamInterface;
  * Allows for easy testing and extension of a provided stream without needing
  * to create a concrete class for a simple extension point.
  */
-final class FnStream implements StreamInterface
+final class FnStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
     private const SLOTS = [
         '__toString', 'close', 'detach', 'rewind',
@@ -76,7 +76,7 @@ final class FnStream implements StreamInterface
      *
      * @return FnStream
      */
-    public static function decorate(StreamInterface $stream, array $methods)
+    public static function decorate(\Ttc\Psr\Http\Message\StreamInterface $stream, array $methods)
     {
         // If any of the required methods were not provided, then simply
         // proxy to the decorated stream.

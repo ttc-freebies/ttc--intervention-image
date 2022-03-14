@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Exception;
+namespace Ttc\Intervention\Image\Exception;
 
-class NotSupportedException extends ImageException
+class NotSupportedException extends \Ttc\Intervention\Image\Exception\ImageException
 {
     # nothing to override
 }

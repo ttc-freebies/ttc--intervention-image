@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Ttc\Intervention\Image\Imagick;
 
-use Intervention\Image\AbstractColor;
+use Ttc\Intervention\Image\AbstractColor;
 
-class Color extends AbstractColor
+class Color extends \Ttc\Intervention\Image\AbstractColor
 {
     /**
      * ImagickPixel containing current color information
@@ -180,7 +180,7 @@ class Color extends AbstractColor
      * @param  int           $tolerance
      * @return boolean
      */
-    public function differs(AbstractColor $color, $tolerance = 0)
+    public function differs(\Ttc\Intervention\Image\AbstractColor $color, $tolerance = 0)
     {
         $color_tolerance = round($tolerance * 2.55);
         $alpha_tolerance = round($tolerance);

@@ -1,14 +1,14 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Image;
-use Intervention\Image\Imagick\Color;
-use Intervention\Image\Imagick\Decoder;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Exception\NotReadableException;
+use Ttc\Intervention\Image\Image;
+use Ttc\Intervention\Image\Imagick\Color;
+use Ttc\Intervention\Image\Imagick\Decoder;
 
-class FillCommand extends AbstractCommand
+class FillCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Fills image with color or pattern
@@ -26,20 +26,20 @@ class FillCommand extends AbstractCommand
 
         try {
             // set image filling
-            $source = new Decoder;
+            $source = new \Ttc\Intervention\Image\Imagick\Decoder;
             $filling = $source->init($filling);
 
-        } catch (NotReadableException $e) {
+        } catch (\Ttc\Intervention\Image\Exception\NotReadableException $e) {
 
             // set solid color filling
-            $filling = new Color($filling);
+            $filling = new \Ttc\Intervention\Image\Imagick\Color($filling);
         }
 
         // flood fill if coordinates are set
         if (is_int($x) && is_int($y)) {
 
             // flood fill with texture
-            if ($filling instanceof Image) {
+            if ($filling instanceof \Ttc\Intervention\Image\Image) {
 
                 // create tile
                 $tile = clone $image->getCore();
@@ -60,7 +60,7 @@ class FillCommand extends AbstractCommand
                 $image->setCore($canvas);
 
             // flood fill with color
-            } elseif ($filling instanceof Color) {
+            } elseif ($filling instanceof \Ttc\Intervention\Image\Imagick\Color) {
 
                 // create canvas with filling
                 $canvas = new \Imagick;
@@ -85,12 +85,12 @@ class FillCommand extends AbstractCommand
 
         } else {
 
-            if ($filling instanceof Image) {
+            if ($filling instanceof \Ttc\Intervention\Image\Image) {
 
                 // fill whole image with texture
                 $image->setCore($image->getCore()->textureImage($filling->getCore()));
 
-            } elseif ($filling instanceof Color) {
+            } elseif ($filling instanceof \Ttc\Intervention\Image\Imagick\Color) {
 
                 // fill whole image with color
                 $draw = new \ImagickDraw();

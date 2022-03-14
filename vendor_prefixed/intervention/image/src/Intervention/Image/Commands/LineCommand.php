@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
 use Closure;
 
-class LineCommand extends AbstractCommand
+class LineCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Draws line on given image

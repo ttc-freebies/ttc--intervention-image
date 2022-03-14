@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Exception\RuntimeException;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Exception\RuntimeException;
 
-class ResetCommand extends AbstractCommand
+class ResetCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Resets given image to its backup state
@@ -33,7 +33,7 @@ class ResetCommand extends AbstractCommand
             return true;
         }
 
-        throw new RuntimeException(
+        throw new \Ttc\Intervention\Image\Exception\RuntimeException(
             "Backup not available. Call backup({$backupName}) before reset()."
         );
     }

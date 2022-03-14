@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Provides a buffer stream that can be written to to fill a buffer, and read
@@ -14,7 +14,7 @@ use Psr\Http\Message\StreamInterface;
  * what the configured high water mark of the stream is, or the maximum
  * preferred size of the buffer.
  */
-final class BufferStream implements StreamInterface
+final class BufferStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
     /** @var int */
     private $hwm;

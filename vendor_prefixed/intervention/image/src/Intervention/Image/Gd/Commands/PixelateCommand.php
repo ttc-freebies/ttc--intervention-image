@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class PixelateCommand extends AbstractCommand
+class PixelateCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Applies a pixelation effect to a given image

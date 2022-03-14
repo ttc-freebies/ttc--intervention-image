@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\UriInterface;
+use Ttc\Psr\Http\Message\UriInterface;
 
 /**
  * Provides methods to normalize and compare URIs.
@@ -121,7 +121,7 @@ final class UriNormalizer
      *
      * @link https://tools.ietf.org/html/rfc3986#section-6.2
      */
-    public static function normalize(UriInterface $uri, int $flags = self::PRESERVING_NORMALIZATIONS): UriInterface
+    public static function normalize(\Ttc\Psr\Http\Message\UriInterface $uri, int $flags = self::PRESERVING_NORMALIZATIONS): \Ttc\Psr\Http\Message\UriInterface
     {
         if ($flags & self::CAPITALIZE_PERCENT_ENCODING) {
             $uri = self::capitalizePercentEncoding($uri);
@@ -141,12 +141,12 @@ final class UriNormalizer
             $uri = $uri->withHost('');
         }
 
-        if ($flags & self::REMOVE_DEFAULT_PORT && $uri->getPort() !== null && Uri::isDefaultPort($uri)) {
+        if ($flags & self::REMOVE_DEFAULT_PORT && $uri->getPort() !== null && \Ttc\GuzzleHttp\Psr7\Uri::isDefaultPort($uri)) {
             $uri = $uri->withPort(null);
         }
 
-        if ($flags & self::REMOVE_DOT_SEGMENTS && !Uri::isRelativePathReference($uri)) {
-            $uri = $uri->withPath(UriResolver::removeDotSegments($uri->getPath()));
+        if ($flags & self::REMOVE_DOT_SEGMENTS && !\Ttc\GuzzleHttp\Psr7\Uri::isRelativePathReference($uri)) {
+            $uri = $uri->withPath(\Ttc\GuzzleHttp\Psr7\UriResolver::removeDotSegments($uri->getPath()));
         }
 
         if ($flags & self::REMOVE_DUPLICATE_SLASHES) {
@@ -176,12 +176,12 @@ final class UriNormalizer
      *
      * @link https://tools.ietf.org/html/rfc3986#section-6.1
      */
-    public static function isEquivalent(UriInterface $uri1, UriInterface $uri2, int $normalizations = self::PRESERVING_NORMALIZATIONS): bool
+    public static function isEquivalent(\Ttc\Psr\Http\Message\UriInterface $uri1, \Ttc\Psr\Http\Message\UriInterface $uri2, int $normalizations = self::PRESERVING_NORMALIZATIONS): bool
     {
         return (string) self::normalize($uri1, $normalizations) === (string) self::normalize($uri2, $normalizations);
     }
 
-    private static function capitalizePercentEncoding(UriInterface $uri): UriInterface
+    private static function capitalizePercentEncoding(\Ttc\Psr\Http\Message\UriInterface $uri): \Ttc\Psr\Http\Message\UriInterface
     {
         $regex = '/(?:%[A-Fa-f0-9]{2})++/';
 
@@ -197,7 +197,7 @@ final class UriNormalizer
             );
     }
 
-    private static function decodeUnreservedCharacters(UriInterface $uri): UriInterface
+    private static function decodeUnreservedCharacters(\Ttc\Psr\Http\Message\UriInterface $uri): \Ttc\Psr\Http\Message\UriInterface
     {
         $regex = '/%(?:2D|2E|5F|7E|3[0-9]|[46][1-9A-F]|[57][0-9A])/i';
 

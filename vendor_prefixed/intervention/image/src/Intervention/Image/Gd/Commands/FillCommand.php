@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Gd\Color;
-use Intervention\Image\Gd\Decoder;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Gd\Color;
+use Ttc\Intervention\Image\Gd\Decoder;
 
-class FillCommand extends AbstractCommand
+class FillCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Fills image with color or pattern
@@ -27,15 +27,15 @@ class FillCommand extends AbstractCommand
         try {
 
             // set image tile filling
-            $source = new Decoder;
+            $source = new \Ttc\Intervention\Image\Gd\Decoder;
             $tile = $source->init($filling);
             imagesettile($image->getCore(), $tile->getCore());
             $filling = IMG_COLOR_TILED;
 
-        } catch (\Intervention\Image\Exception\NotReadableException $e) {
+        } catch (\Ttc\Intervention\Image\Exception\NotReadableException $e) {
 
             // set solid color filling
-            $color = new Color($filling);
+            $color = new \Ttc\Intervention\Image\Gd\Color($filling);
             $filling = $color->getInt();
         }
 

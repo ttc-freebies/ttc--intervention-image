@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\RequestFactoryInterface;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestFactoryInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamFactoryInterface;
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileFactoryInterface;
-use Psr\Http\Message\UploadedFileInterface;
-use Psr\Http\Message\UriFactoryInterface;
-use Psr\Http\Message\UriInterface;
+use Ttc\Psr\Http\Message\RequestFactoryInterface;
+use Ttc\Psr\Http\Message\RequestInterface;
+use Ttc\Psr\Http\Message\ResponseFactoryInterface;
+use Ttc\Psr\Http\Message\ResponseInterface;
+use Ttc\Psr\Http\Message\ServerRequestFactoryInterface;
+use Ttc\Psr\Http\Message\ServerRequestInterface;
+use Ttc\Psr\Http\Message\StreamFactoryInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\UploadedFileFactoryInterface;
+use Ttc\Psr\Http\Message\UploadedFileInterface;
+use Ttc\Psr\Http\Message\UriFactoryInterface;
+use Ttc\Psr\Http\Message\UriInterface;
 
 /**
  * Implements all of the PSR-17 interfaces.
@@ -24,36 +24,36 @@ use Psr\Http\Message\UriInterface;
  * and inject the instance of this class multiple times.
  */
 final class HttpFactory implements
-    RequestFactoryInterface,
-    ResponseFactoryInterface,
-    ServerRequestFactoryInterface,
-    StreamFactoryInterface,
-    UploadedFileFactoryInterface,
-    UriFactoryInterface
+    \Ttc\Psr\Http\Message\RequestFactoryInterface,
+    \Ttc\Psr\Http\Message\ResponseFactoryInterface,
+    \Ttc\Psr\Http\Message\ServerRequestFactoryInterface,
+    \Ttc\Psr\Http\Message\StreamFactoryInterface,
+    \Ttc\Psr\Http\Message\UploadedFileFactoryInterface,
+    \Ttc\Psr\Http\Message\UriFactoryInterface
 {
     public function createUploadedFile(
-        StreamInterface $stream,
+        \Ttc\Psr\Http\Message\StreamInterface $stream,
         int $size = null,
         int $error = \UPLOAD_ERR_OK,
         string $clientFilename = null,
         string $clientMediaType = null
-    ): UploadedFileInterface {
+    ): \Ttc\Psr\Http\Message\UploadedFileInterface {
         if ($size === null) {
             $size = $stream->getSize();
         }
 
-        return new UploadedFile($stream, $size, $error, $clientFilename, $clientMediaType);
+        return new \Ttc\GuzzleHttp\Psr7\UploadedFile($stream, $size, $error, $clientFilename, $clientMediaType);
     }
 
-    public function createStream(string $content = ''): StreamInterface
+    public function createStream(string $content = ''): \Ttc\Psr\Http\Message\StreamInterface
     {
-        return Utils::streamFor($content);
+        return \Ttc\GuzzleHttp\Psr7\Utils::streamFor($content);
     }
 
-    public function createStreamFromFile(string $file, string $mode = 'r'): StreamInterface
+    public function createStreamFromFile(string $file, string $mode = 'r'): \Ttc\Psr\Http\Message\StreamInterface
     {
         try {
-            $resource = Utils::tryFopen($file, $mode);
+            $resource = \Ttc\GuzzleHttp\Psr7\Utils::tryFopen($file, $mode);
         } catch (\RuntimeException $e) {
             if ('' === $mode || false === \in_array($mode[0], ['r', 'w', 'a', 'x', 'c'], true)) {
                 throw new \InvalidArgumentException(sprintf('Invalid file opening mode "%s"', $mode), 0, $e);
@@ -62,15 +62,15 @@ final class HttpFactory implements
             throw $e;
         }
 
-        return Utils::streamFor($resource);
+        return \Ttc\GuzzleHttp\Psr7\Utils::streamFor($resource);
     }
 
-    public function createStreamFromResource($resource): StreamInterface
+    public function createStreamFromResource($resource): \Ttc\Psr\Http\Message\StreamInterface
     {
-        return Utils::streamFor($resource);
+        return \Ttc\GuzzleHttp\Psr7\Utils::streamFor($resource);
     }
 
-    public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
+    public function createServerRequest(string $method, $uri, array $serverParams = []): \Ttc\Psr\Http\Message\ServerRequestInterface
     {
         if (empty($method)) {
             if (!empty($serverParams['REQUEST_METHOD'])) {
@@ -80,21 +80,21 @@ final class HttpFactory implements
             }
         }
 
-        return new ServerRequest($method, $uri, [], null, '1.1', $serverParams);
+        return new \Ttc\GuzzleHttp\Psr7\ServerRequest($method, $uri, [], null, '1.1', $serverParams);
     }
 
-    public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface
+    public function createResponse(int $code = 200, string $reasonPhrase = ''): \Ttc\Psr\Http\Message\ResponseInterface
     {
-        return new Response($code, [], null, '1.1', $reasonPhrase);
+        return new \Ttc\GuzzleHttp\Psr7\Response($code, [], null, '1.1', $reasonPhrase);
     }
 
-    public function createRequest(string $method, $uri): RequestInterface
+    public function createRequest(string $method, $uri): \Ttc\Psr\Http\Message\RequestInterface
     {
-        return new Request($method, $uri);
+        return new \Ttc\GuzzleHttp\Psr7\Request($method, $uri);
     }
 
-    public function createUri(string $uri = ''): UriInterface
+    public function createUri(string $uri = ''): \Ttc\Psr\Http\Message\UriInterface
     {
-        return new Uri($uri);
+        return new \Ttc\GuzzleHttp\Psr7\Uri($uri);
     }
 }

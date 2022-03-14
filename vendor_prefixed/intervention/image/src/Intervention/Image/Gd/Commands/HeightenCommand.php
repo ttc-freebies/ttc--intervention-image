@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-class HeightenCommand extends ResizeCommand
+class HeightenCommand extends \Ttc\Intervention\Image\Gd\Commands\ResizeCommand
 {
     /**
      * Resize image proportionally to given height

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Provides a read only stream that pumps data from a PHP callable.
@@ -16,7 +16,7 @@ use Psr\Http\Message\StreamInterface;
  * the read() function of the PumpStream. The provided callable MUST return
  * false when there is no more data to read.
  */
-final class PumpStream implements StreamInterface
+final class PumpStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
     /** @var callable|null */
     private $source;
@@ -48,13 +48,13 @@ final class PumpStream implements StreamInterface
         $this->source = $source;
         $this->size = $options['size'] ?? null;
         $this->metadata = $options['metadata'] ?? [];
-        $this->buffer = new BufferStream();
+        $this->buffer = new \Ttc\GuzzleHttp\Psr7\BufferStream();
     }
 
     public function __toString(): string
     {
         try {
-            return Utils::copyToString($this);
+            return \Ttc\GuzzleHttp\Psr7\Utils::copyToString($this);
         } catch (\Throwable $e) {
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;

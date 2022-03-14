@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class InterlaceCommand extends AbstractCommand
+class InterlaceCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Toggles interlaced encoding mode

@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Filters;
+namespace Ttc\Intervention\Image\Filters;
 
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\Image;
 
 interface FilterInterface
 {
@@ -12,5 +12,5 @@ interface FilterInterface
      * @param  \Intervention\Image\Image $image
      * @return \Intervention\Image\Image
      */
-    public function applyFilter(Image $image);
+    public function applyFilter(\Ttc\Intervention\Image\Image $image);
 }

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Reads from multiple streams, one after the other.
  *
  * This is a read-only stream decorator.
  */
-final class AppendStream implements StreamInterface
+final class AppendStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
     /** @var StreamInterface[] Streams being decorated */
     private $streams = [];
@@ -57,7 +57,7 @@ final class AppendStream implements StreamInterface
      *
      * @throws \InvalidArgumentException if the stream is not readable
      */
-    public function addStream(StreamInterface $stream): void
+    public function addStream(\Ttc\Psr\Http\Message\StreamInterface $stream): void
     {
         if (!$stream->isReadable()) {
             throw new \InvalidArgumentException('Each stream must be readable');
@@ -73,7 +73,7 @@ final class AppendStream implements StreamInterface
 
     public function getContents(): string
     {
-        return Utils::copyToString($this);
+        return \Ttc\GuzzleHttp\Psr7\Utils::copyToString($this);
     }
 
     /**

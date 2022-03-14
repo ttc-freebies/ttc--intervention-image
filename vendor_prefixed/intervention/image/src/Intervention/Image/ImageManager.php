@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
 use Closure;
-use Intervention\Image\Exception\MissingDependencyException;
-use Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Exception\MissingDependencyException;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
 
 class ImageManager
 {
@@ -82,7 +82,7 @@ class ImageManager
     {
         if (class_exists('Intervention\\Image\\ImageCache')) {
             // create imagecache
-            $imagecache = new ImageCache($this);
+            $imagecache = new \Ttc\Intervention\Image\ImageCache($this);
 
             // run callback
             if (is_callable($callback)) {
@@ -92,7 +92,7 @@ class ImageManager
             return $imagecache->get($lifetime, $returnObj);
         }
 
-        throw new MissingDependencyException(
+        throw new \Ttc\Intervention\Image\Exception\MissingDependencyException(
             "Please install package intervention/imagecache before running this function."
         );
     }
@@ -112,16 +112,16 @@ class ImageManager
                 return new $driverclass;
             }
 
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "Driver ({$drivername}) could not be instantiated."
             );
         }
 
-        if ($this->config['driver'] instanceof AbstractDriver) {
+        if ($this->config['driver'] instanceof \Ttc\Intervention\Image\AbstractDriver) {
             return $this->config['driver'];
         }
 
-        throw new NotSupportedException(
+        throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
             "Unknown driver type."
         );
     }
@@ -134,7 +134,7 @@ class ImageManager
     private function checkRequirements()
     {
         if ( ! function_exists('finfo_buffer')) {
-            throw new MissingDependencyException(
+            throw new \Ttc\Intervention\Image\Exception\MissingDependencyException(
                 "PHP Fileinfo extension must be installed/enabled to use Intervention Image."
             );
         }

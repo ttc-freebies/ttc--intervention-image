@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class BlurCommand extends AbstractCommand
+class BlurCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Applies blur effect on image

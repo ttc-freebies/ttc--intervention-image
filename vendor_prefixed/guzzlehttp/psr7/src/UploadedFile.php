@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
 use InvalidArgumentException;
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 
-class UploadedFile implements UploadedFileInterface
+class UploadedFile implements \Ttc\Psr\Http\Message\UploadedFileInterface
 {
     private const ERRORS = [
         UPLOAD_ERR_OK,
@@ -89,8 +89,8 @@ class UploadedFile implements UploadedFileInterface
         if (is_string($streamOrFile)) {
             $this->file = $streamOrFile;
         } elseif (is_resource($streamOrFile)) {
-            $this->stream = new Stream($streamOrFile);
-        } elseif ($streamOrFile instanceof StreamInterface) {
+            $this->stream = new \Ttc\GuzzleHttp\Psr7\Stream($streamOrFile);
+        } elseif ($streamOrFile instanceof \Ttc\Psr\Http\Message\StreamInterface) {
             $this->stream = $streamOrFile;
         } else {
             throw new InvalidArgumentException(
@@ -104,7 +104,7 @@ class UploadedFile implements UploadedFileInterface
      */
     private function setError(int $error): void
     {
-        if (false === in_array($error, UploadedFile::ERRORS, true)) {
+        if (false === in_array($error, \Ttc\GuzzleHttp\Psr7\UploadedFile::ERRORS, true)) {
             throw new InvalidArgumentException(
                 'Invalid error status for UploadedFile'
             );
@@ -145,18 +145,18 @@ class UploadedFile implements UploadedFileInterface
         }
     }
 
-    public function getStream(): StreamInterface
+    public function getStream(): \Ttc\Psr\Http\Message\StreamInterface
     {
         $this->validateActive();
 
-        if ($this->stream instanceof StreamInterface) {
+        if ($this->stream instanceof \Ttc\Psr\Http\Message\StreamInterface) {
             return $this->stream;
         }
 
         /** @var string $file */
         $file = $this->file;
 
-        return new LazyOpenStream($file, 'r+');
+        return new \Ttc\GuzzleHttp\Psr7\LazyOpenStream($file, 'r+');
     }
 
     public function moveTo($targetPath): void
@@ -174,9 +174,9 @@ class UploadedFile implements UploadedFileInterface
                 ? rename($this->file, $targetPath)
                 : move_uploaded_file($this->file, $targetPath);
         } else {
-            Utils::copyToStream(
+            \Ttc\GuzzleHttp\Psr7\Utils::copyToStream(
                 $this->getStream(),
-                new LazyOpenStream($targetPath, 'w')
+                new \Ttc\GuzzleHttp\Psr7\LazyOpenStream($targetPath, 'w')
             );
 
             $this->moved = true;

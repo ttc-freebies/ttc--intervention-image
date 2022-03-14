@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Decorator used to return only a subset of a stream.
  */
-final class LimitStream implements StreamInterface
+final class LimitStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
-    use StreamDecoratorTrait;
+    use \Ttc\GuzzleHttp\Psr7\StreamDecoratorTrait;
 
     /** @var int Offset to start reading from */
     private $offset;
@@ -27,7 +27,7 @@ final class LimitStream implements StreamInterface
      *                                works on seekable streams).
      */
     public function __construct(
-        StreamInterface $stream,
+        \Ttc\Psr\Http\Message\StreamInterface $stream,
         int $limit = -1,
         int $offset = 0
     ) {

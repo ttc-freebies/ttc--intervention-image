@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Imagick\Shapes;
+namespace Ttc\Intervention\Image\Imagick\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Image;
-use Intervention\Image\Imagick\Color;
+use Ttc\Intervention\Image\AbstractShape;
+use Ttc\Intervention\Image\Image;
+use Ttc\Intervention\Image\Imagick\Color;
 
-class LineShape extends AbstractShape
+class LineShape extends \Ttc\Intervention\Image\AbstractShape
 {
     /**
      * Starting point x-coordinate of line
@@ -78,11 +78,11 @@ class LineShape extends AbstractShape
      * @param  int     $y
      * @return boolean
      */
-    public function applyToImage(Image $image, $x = 0, $y = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $x = 0, $y = 0)
     {
         $line = new \ImagickDraw;
 
-        $color = new Color($this->color);
+        $color = new \Ttc\Intervention\Image\Imagick\Color($this->color);
         $line->setStrokeColor($color->getPixel());
         $line->setStrokeWidth($this->width);
 

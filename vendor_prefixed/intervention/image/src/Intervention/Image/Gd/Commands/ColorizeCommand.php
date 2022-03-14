@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class ColorizeCommand extends AbstractCommand
+class ColorizeCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Changes balance of different RGB color channels

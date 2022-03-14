@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class FlipCommand extends AbstractCommand
+class FlipCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Mirrors an image

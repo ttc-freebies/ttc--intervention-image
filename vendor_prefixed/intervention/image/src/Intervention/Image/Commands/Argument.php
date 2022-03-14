@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-use Intervention\Image\Exception\InvalidArgumentException;
+use Ttc\Intervention\Image\Exception\InvalidArgumentException;
 
 class Argument
 {
@@ -26,7 +26,7 @@ class Argument
      * @param AbstractCommand $command
      * @param int             $key
      */
-    public function __construct(AbstractCommand $command, $key = 0)
+    public function __construct(\Ttc\Intervention\Image\Commands\AbstractCommand $command, $key = 0)
     {
         $this->command = $command;
         $this->key = $key;
@@ -68,7 +68,7 @@ class Argument
     public function required()
     {
         if ( ! array_key_exists($this->key, $this->command->arguments)) {
-            throw new InvalidArgumentException(
+            throw new \Ttc\Intervention\Image\Exception\InvalidArgumentException(
                 sprintf("Missing argument %d for %s", $this->key + 1, $this->getCommandName())
             );
         }
@@ -135,7 +135,7 @@ class Argument
                 $message = sprintf('Missing argument for %d.', $argument);
             }
 
-            throw new InvalidArgumentException(
+            throw new \Ttc\Intervention\Image\Exception\InvalidArgumentException(
                 $message
             );
         }
@@ -160,7 +160,7 @@ class Argument
         $omega = max($x, $y);
 
         if ($value < $alpha || $value > $omega) {
-            throw new InvalidArgumentException(
+            throw new \Ttc\Intervention\Image\Exception\InvalidArgumentException(
                 sprintf('Argument %d must be between %s and %s.', $this->key, $x, $y)
             );
         }
@@ -182,7 +182,7 @@ class Argument
         }
 
         if ($v < $value) {
-            throw new InvalidArgumentException(
+            throw new \Ttc\Intervention\Image\Exception\InvalidArgumentException(
                 sprintf('Argument %d must be at least %s.', $this->key, $value)
             );
         }
@@ -204,7 +204,7 @@ class Argument
         }
 
         if ($v > $value) {
-            throw new InvalidArgumentException(
+            throw new \Ttc\Intervention\Image\Exception\InvalidArgumentException(
                 sprintf('Argument %d may not be greater than %s.', $this->key, $value)
             );
         }

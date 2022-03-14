@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Shapes;
+namespace Ttc\Intervention\Image\Gd\Shapes;
 
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\Image;
 
-class CircleShape extends EllipseShape
+class CircleShape extends \Ttc\Intervention\Image\Gd\Shapes\EllipseShape
 {
     /**
      * Diameter of circle in pixels
@@ -33,7 +33,7 @@ class CircleShape extends EllipseShape
      * @param  int     $y
      * @return boolean
      */
-    public function applyToImage(Image $image, $x = 0, $y = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $x = 0, $y = 0)
     {
         return parent::applyToImage($image, $x, $y);
     }

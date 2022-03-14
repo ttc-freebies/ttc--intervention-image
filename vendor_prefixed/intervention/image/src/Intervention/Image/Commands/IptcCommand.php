@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-use Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
 
-class IptcCommand extends AbstractCommand
+class IptcCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Read Iptc data from the given image
@@ -15,7 +15,7 @@ class IptcCommand extends AbstractCommand
     public function execute($image)
     {
         if ( ! function_exists('iptcparse')) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "Reading Iptc data is not supported by this PHP installation."
             );
         }

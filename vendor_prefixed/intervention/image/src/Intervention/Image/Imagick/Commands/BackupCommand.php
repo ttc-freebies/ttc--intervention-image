@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class BackupCommand extends AbstractCommand
+class BackupCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Saves a backups of current state of image core

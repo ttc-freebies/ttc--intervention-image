@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Gd\Color;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Gd\Color;
 
-class PickColorCommand extends AbstractCommand
+class PickColorCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Read color information from a certain position
@@ -27,7 +27,7 @@ class PickColorCommand extends AbstractCommand
             $color['alpha'] = round(1 - $color['alpha'] / 127, 2);
         }
 
-        $color = new Color($color);
+        $color = new \Ttc\Intervention\Image\Gd\Color($color);
 
         // format to output
         $this->setOutput($color->format($format));

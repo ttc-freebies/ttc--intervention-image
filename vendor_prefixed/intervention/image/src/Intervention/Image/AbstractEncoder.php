@@ -1,9 +1,9 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
-use Intervention\Image\Exception\InvalidArgumentException;
-use Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Exception\InvalidArgumentException;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
 
 abstract class AbstractEncoder
 {
@@ -106,7 +106,7 @@ abstract class AbstractEncoder
      * @param  int     $quality
      * @return Image
      */
-    public function process(Image $image, $format = null, $quality = null)
+    public function process(\Ttc\Intervention\Image\Image $image, $format = null, $quality = null)
     {
         $this->setImage($image);
         $this->setFormat($format);
@@ -197,7 +197,7 @@ abstract class AbstractEncoder
                 break;
                 
             default:
-                throw new NotSupportedException(
+                throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                     "Encoding format ({$this->format}) is not supported."
                 );
         }
@@ -239,7 +239,7 @@ abstract class AbstractEncoder
      */
     protected function setFormat($format = null)
     {
-        if ($format == '' && $this->image instanceof Image) {
+        if ($format == '' && $this->image instanceof \Ttc\Intervention\Image\Image) {
             $format = $this->image->mime;
         }
 
@@ -259,7 +259,7 @@ abstract class AbstractEncoder
         $quality = $quality === 0 ? 1 : $quality;
 
         if ($quality < 0 || $quality > 100) {
-            throw new InvalidArgumentException(
+            throw new \Ttc\Intervention\Image\Exception\InvalidArgumentException(
                 'Quality must range from 0 to 100.'
             );
         }

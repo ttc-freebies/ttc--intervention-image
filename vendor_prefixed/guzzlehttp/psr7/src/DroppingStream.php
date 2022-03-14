@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Stream decorator that begins dropping data once the size of the underlying
  * stream becomes too full.
  */
-final class DroppingStream implements StreamInterface
+final class DroppingStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
-    use StreamDecoratorTrait;
+    use \Ttc\GuzzleHttp\Psr7\StreamDecoratorTrait;
 
     /** @var int */
     private $maxLength;
@@ -21,7 +21,7 @@ final class DroppingStream implements StreamInterface
      * @param StreamInterface $stream    Underlying stream to decorate.
      * @param int             $maxLength Maximum size before dropping data.
      */
-    public function __construct(StreamInterface $stream, int $maxLength)
+    public function __construct(\Ttc\Psr\Http\Message\StreamInterface $stream, int $maxLength)
     {
         $this->stream = $stream;
         $this->maxLength = $maxLength;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
 use Closure;
 
-class TextCommand extends AbstractCommand
+class TextCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Write text on given image

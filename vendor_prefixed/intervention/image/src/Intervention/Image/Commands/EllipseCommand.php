@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
 use Closure;
 
-class EllipseCommand extends AbstractCommand
+class EllipseCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Draws ellipse on given image

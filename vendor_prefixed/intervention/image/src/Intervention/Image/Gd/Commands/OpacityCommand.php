@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class OpacityCommand extends AbstractCommand
+class OpacityCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Defines opacity of an image

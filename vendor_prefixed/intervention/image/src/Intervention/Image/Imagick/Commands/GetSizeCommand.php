@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Size;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Size;
 
-class GetSizeCommand extends AbstractCommand
+class GetSizeCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Reads size of given image instance in pixels
@@ -18,7 +18,7 @@ class GetSizeCommand extends AbstractCommand
         /** @var \Imagick $core */
         $core = $image->getCore();
 
-        $this->setOutput(new Size(
+        $this->setOutput(new \Ttc\Intervention\Image\Size(
             $core->getImageWidth(),
             $core->getImageHeight()
         ));

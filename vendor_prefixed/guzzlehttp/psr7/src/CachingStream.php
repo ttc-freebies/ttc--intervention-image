@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Stream decorator that can cache previously read bytes from a sequentially
  * read stream.
  */
-final class CachingStream implements StreamInterface
+final class CachingStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
-    use StreamDecoratorTrait;
+    use \Ttc\GuzzleHttp\Psr7\StreamDecoratorTrait;
 
     /** @var StreamInterface Stream being wrapped */
     private $remoteStream;
@@ -27,11 +27,11 @@ final class CachingStream implements StreamInterface
      * @param StreamInterface $target Optionally specify where data is cached
      */
     public function __construct(
-        StreamInterface $stream,
-        StreamInterface $target = null
+        \Ttc\Psr\Http\Message\StreamInterface $stream,
+        \Ttc\Psr\Http\Message\StreamInterface $target = null
     ) {
         $this->remoteStream = $stream;
-        $this->stream = $target ?: new Stream(Utils::tryFopen('php://temp', 'r+'));
+        $this->stream = $target ?: new \Ttc\GuzzleHttp\Psr7\Stream(\Ttc\GuzzleHttp\Psr7\Utils::tryFopen('php://temp', 'r+'));
     }
 
     public function getSize(): ?int
@@ -140,8 +140,8 @@ final class CachingStream implements StreamInterface
 
     private function cacheEntireStream(): int
     {
-        $target = new FnStream(['write' => 'strlen']);
-        Utils::copyToStream($this, $target);
+        $target = new \Ttc\GuzzleHttp\Psr7\FnStream(['write' => 'strlen']);
+        \Ttc\GuzzleHttp\Psr7\Utils::copyToStream($this, $target);
 
         return $this->tell();
     }

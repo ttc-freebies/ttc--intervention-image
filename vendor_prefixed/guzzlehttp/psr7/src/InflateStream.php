@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Uses PHP's zlib.inflate filter to inflate zlib (HTTP deflate, RFC1950) or gzipped (RFC1952) content.
@@ -17,18 +17,18 @@ use Psr\Http\Message\StreamInterface;
  * @link http://tools.ietf.org/html/rfc1952
  * @link http://php.net/manual/en/filters.compression.php
  */
-final class InflateStream implements StreamInterface
+final class InflateStream implements \Ttc\Psr\Http\Message\StreamInterface
 {
-    use StreamDecoratorTrait;
+    use \Ttc\GuzzleHttp\Psr7\StreamDecoratorTrait;
 
-    public function __construct(StreamInterface $stream)
+    public function __construct(\Ttc\Psr\Http\Message\StreamInterface $stream)
     {
-        $resource = StreamWrapper::getResource($stream);
+        $resource = \Ttc\GuzzleHttp\Psr7\StreamWrapper::getResource($stream);
         // Specify window=15+32, so zlib will use header detection to both gzip (with header) and zlib data
         // See http://www.zlib.net/manual.html#Advanced definition of inflateInit2
         // "Add 32 to windowBits to enable zlib and gzip decoding with automatic header detection"
         // Default window size is 15.
         stream_filter_append($resource, 'zlib.inflate', STREAM_FILTER_READ, ['window' => 15 + 32]);
-        $this->stream = $stream->isSeekable() ? new Stream($resource) : new NoSeekStream(new Stream($resource));
+        $this->stream = $stream->isSeekable() ? new \Ttc\GuzzleHttp\Psr7\Stream($resource) : new \Ttc\GuzzleHttp\Psr7\NoSeekStream(new \Ttc\GuzzleHttp\Psr7\Stream($resource));
     }
 }

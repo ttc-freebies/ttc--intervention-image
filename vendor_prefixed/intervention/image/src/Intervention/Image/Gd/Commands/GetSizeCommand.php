@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Size;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Size;
 
-class GetSizeCommand extends AbstractCommand
+class GetSizeCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Reads size of given image instance in pixels
@@ -15,7 +15,7 @@ class GetSizeCommand extends AbstractCommand
      */
     public function execute($image)
     {
-        $this->setOutput(new Size(
+        $this->setOutput(new \Ttc\Intervention\Image\Size(
             imagesx($image->getCore()),
             imagesy($image->getCore())
         ));

@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\ExifCommand as BaseCommand;
-use Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Commands\ExifCommand as BaseCommand;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
 
-class ExifCommand extends BaseCommand
+class ExifCommand extends \Ttc\Intervention\Image\Commands\ExifCommand
 {
     /**
      * Prefer extension or not
@@ -36,7 +36,7 @@ class ExifCommand extends BaseCommand
         $core = $image->getCore();
 
         if ( ! method_exists($core, 'getImageProperties')) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "Reading Exif data is not supported by this PHP installation."
             );
         }

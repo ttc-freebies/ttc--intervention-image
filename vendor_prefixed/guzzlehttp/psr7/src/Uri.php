@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use GuzzleHttp\Psr7\Exception\MalformedUriException;
-use Psr\Http\Message\UriInterface;
+use Ttc\GuzzleHttp\Psr7\Exception\MalformedUriException;
+use Ttc\Psr\Http\Message\UriInterface;
 
 /**
  * PSR-7 URI implementation.
@@ -14,7 +14,7 @@ use Psr\Http\Message\UriInterface;
  * @author Tobias Schultze
  * @author Matthew Weier O'Phinney
  */
-class Uri implements UriInterface
+class Uri implements \Ttc\Psr\Http\Message\UriInterface
 {
     /**
      * Absolute http and https URIs require a host per RFC 7230 Section 2.7
@@ -82,7 +82,7 @@ class Uri implements UriInterface
         if ($uri !== '') {
             $parts = self::parse($uri);
             if ($parts === false) {
-                throw new MalformedUriException("Unable to parse URI: $uri");
+                throw new \Ttc\GuzzleHttp\Psr7\Exception\MalformedUriException("Unable to parse URI: $uri");
             }
             $this->applyParts($parts);
         }
@@ -195,7 +195,7 @@ class Uri implements UriInterface
      * `Psr\Http\Message\UriInterface::getPort` may return null or the standard port. This method can be used
      * independently of the implementation.
      */
-    public static function isDefaultPort(UriInterface $uri): bool
+    public static function isDefaultPort(\Ttc\Psr\Http\Message\UriInterface $uri): bool
     {
         return $uri->getPort() === null
             || (isset(self::DEFAULT_PORTS[$uri->getScheme()]) && $uri->getPort() === self::DEFAULT_PORTS[$uri->getScheme()]);
@@ -216,7 +216,7 @@ class Uri implements UriInterface
      * @see Uri::isRelativePathReference
      * @link https://tools.ietf.org/html/rfc3986#section-4
      */
-    public static function isAbsolute(UriInterface $uri): bool
+    public static function isAbsolute(\Ttc\Psr\Http\Message\UriInterface $uri): bool
     {
         return $uri->getScheme() !== '';
     }
@@ -228,7 +228,7 @@ class Uri implements UriInterface
      *
      * @link https://tools.ietf.org/html/rfc3986#section-4.2
      */
-    public static function isNetworkPathReference(UriInterface $uri): bool
+    public static function isNetworkPathReference(\Ttc\Psr\Http\Message\UriInterface $uri): bool
     {
         return $uri->getScheme() === '' && $uri->getAuthority() !== '';
     }
@@ -240,7 +240,7 @@ class Uri implements UriInterface
      *
      * @link https://tools.ietf.org/html/rfc3986#section-4.2
      */
-    public static function isAbsolutePathReference(UriInterface $uri): bool
+    public static function isAbsolutePathReference(\Ttc\Psr\Http\Message\UriInterface $uri): bool
     {
         return $uri->getScheme() === ''
             && $uri->getAuthority() === ''
@@ -255,7 +255,7 @@ class Uri implements UriInterface
      *
      * @link https://tools.ietf.org/html/rfc3986#section-4.2
      */
-    public static function isRelativePathReference(UriInterface $uri): bool
+    public static function isRelativePathReference(\Ttc\Psr\Http\Message\UriInterface $uri): bool
     {
         return $uri->getScheme() === ''
             && $uri->getAuthority() === ''
@@ -274,10 +274,10 @@ class Uri implements UriInterface
      *
      * @link https://tools.ietf.org/html/rfc3986#section-4.4
      */
-    public static function isSameDocumentReference(UriInterface $uri, UriInterface $base = null): bool
+    public static function isSameDocumentReference(\Ttc\Psr\Http\Message\UriInterface $uri, \Ttc\Psr\Http\Message\UriInterface $base = null): bool
     {
         if ($base !== null) {
-            $uri = UriResolver::resolve($base, $uri);
+            $uri = \Ttc\GuzzleHttp\Psr7\UriResolver::resolve($base, $uri);
 
             return ($uri->getScheme() === $base->getScheme())
                 && ($uri->getAuthority() === $base->getAuthority())
@@ -297,7 +297,7 @@ class Uri implements UriInterface
      * @param UriInterface $uri URI to use as a base.
      * @param string       $key Query string key to remove.
      */
-    public static function withoutQueryValue(UriInterface $uri, string $key): UriInterface
+    public static function withoutQueryValue(\Ttc\Psr\Http\Message\UriInterface $uri, string $key): \Ttc\Psr\Http\Message\UriInterface
     {
         $result = self::getFilteredQueryString($uri, [$key]);
 
@@ -317,7 +317,7 @@ class Uri implements UriInterface
      * @param string       $key   Key to set.
      * @param string|null  $value Value to set
      */
-    public static function withQueryValue(UriInterface $uri, string $key, ?string $value): UriInterface
+    public static function withQueryValue(\Ttc\Psr\Http\Message\UriInterface $uri, string $key, ?string $value): \Ttc\Psr\Http\Message\UriInterface
     {
         $result = self::getFilteredQueryString($uri, [$key]);
 
@@ -334,7 +334,7 @@ class Uri implements UriInterface
      * @param UriInterface               $uri           URI to use as a base.
      * @param array<string, string|null> $keyValueArray Associative array of key and values
      */
-    public static function withQueryValues(UriInterface $uri, array $keyValueArray): UriInterface
+    public static function withQueryValues(\Ttc\Psr\Http\Message\UriInterface $uri, array $keyValueArray): \Ttc\Psr\Http\Message\UriInterface
     {
         $result = self::getFilteredQueryString($uri, array_keys($keyValueArray));
 
@@ -352,7 +352,7 @@ class Uri implements UriInterface
      *
      * @throws MalformedUriException If the components do not form a valid URI.
      */
-    public static function fromParts(array $parts): UriInterface
+    public static function fromParts(array $parts): \Ttc\Psr\Http\Message\UriInterface
     {
         $uri = new self();
         $uri->applyParts($parts);
@@ -410,7 +410,7 @@ class Uri implements UriInterface
         return $this->fragment;
     }
 
-    public function withScheme($scheme): UriInterface
+    public function withScheme($scheme): \Ttc\Psr\Http\Message\UriInterface
     {
         $scheme = $this->filterScheme($scheme);
 
@@ -427,7 +427,7 @@ class Uri implements UriInterface
         return $new;
     }
 
-    public function withUserInfo($user, $password = null): UriInterface
+    public function withUserInfo($user, $password = null): \Ttc\Psr\Http\Message\UriInterface
     {
         $info = $this->filterUserInfoComponent($user);
         if ($password !== null) {
@@ -446,7 +446,7 @@ class Uri implements UriInterface
         return $new;
     }
 
-    public function withHost($host): UriInterface
+    public function withHost($host): \Ttc\Psr\Http\Message\UriInterface
     {
         $host = $this->filterHost($host);
 
@@ -462,7 +462,7 @@ class Uri implements UriInterface
         return $new;
     }
 
-    public function withPort($port): UriInterface
+    public function withPort($port): \Ttc\Psr\Http\Message\UriInterface
     {
         $port = $this->filterPort($port);
 
@@ -479,7 +479,7 @@ class Uri implements UriInterface
         return $new;
     }
 
-    public function withPath($path): UriInterface
+    public function withPath($path): \Ttc\Psr\Http\Message\UriInterface
     {
         $path = $this->filterPath($path);
 
@@ -495,7 +495,7 @@ class Uri implements UriInterface
         return $new;
     }
 
-    public function withQuery($query): UriInterface
+    public function withQuery($query): \Ttc\Psr\Http\Message\UriInterface
     {
         $query = $this->filterQueryAndFragment($query);
 
@@ -510,7 +510,7 @@ class Uri implements UriInterface
         return $new;
     }
 
-    public function withFragment($fragment): UriInterface
+    public function withFragment($fragment): \Ttc\Psr\Http\Message\UriInterface
     {
         $fragment = $this->filterQueryAndFragment($fragment);
 
@@ -632,7 +632,7 @@ class Uri implements UriInterface
      *
      * @return string[]
      */
-    private static function getFilteredQueryString(UriInterface $uri, array $keys): array
+    private static function getFilteredQueryString(\Ttc\Psr\Http\Message\UriInterface $uri, array $keys): array
     {
         $current = $uri->getQuery();
 
@@ -721,13 +721,13 @@ class Uri implements UriInterface
 
         if ($this->getAuthority() === '') {
             if (0 === strpos($this->path, '//')) {
-                throw new MalformedUriException('The path of a URI without an authority must not start with two slashes "//"');
+                throw new \Ttc\GuzzleHttp\Psr7\Exception\MalformedUriException('The path of a URI without an authority must not start with two slashes "//"');
             }
             if ($this->scheme === '' && false !== strpos(explode('/', $this->path, 2)[0], ':')) {
-                throw new MalformedUriException('A relative URI must not have a path beginning with a segment containing a colon');
+                throw new \Ttc\GuzzleHttp\Psr7\Exception\MalformedUriException('A relative URI must not have a path beginning with a segment containing a colon');
             }
         } elseif (isset($this->path[0]) && $this->path[0] !== '/') {
-            throw new MalformedUriException('The path of a URI with an authority must start with a slash "/" or be empty');
+            throw new \Ttc\GuzzleHttp\Psr7\Exception\MalformedUriException('The path of a URI with an authority must start with a slash "/" or be empty');
         }
     }
 }

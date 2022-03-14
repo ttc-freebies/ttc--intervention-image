@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
 use Closure;
 
-class RectangleCommand extends AbstractCommand
+class RectangleCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Draws rectangle on given image

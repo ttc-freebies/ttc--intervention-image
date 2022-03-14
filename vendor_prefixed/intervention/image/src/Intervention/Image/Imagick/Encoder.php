@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Ttc\Intervention\Image\Imagick;
 
-use Intervention\Image\AbstractEncoder;
-use Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\AbstractEncoder;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
 
-class Encoder extends AbstractEncoder
+class Encoder extends \Ttc\Intervention\Image\AbstractEncoder
 {
     /**
      * Processes and returns encoded image as JPEG string
@@ -76,7 +76,7 @@ class Encoder extends AbstractEncoder
     protected function processWebp()
     {
         if ( ! \Imagick::queryFormats('WEBP')) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "Webp format is not supported by Imagick installation."
             );
         }
@@ -191,7 +191,7 @@ class Encoder extends AbstractEncoder
     protected function processAvif()
     {
         if ( ! \Imagick::queryFormats('AVIF')) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "AVIF format is not supported by Imagick installation."
             );
         }
@@ -218,7 +218,7 @@ class Encoder extends AbstractEncoder
     protected function processHeic()
     {
         if ( ! \Imagick::queryFormats('HEIC')) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "HEIC format is not supported by Imagick installation."
             );
         }

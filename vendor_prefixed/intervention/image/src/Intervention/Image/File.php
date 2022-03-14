@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
 class File
 {

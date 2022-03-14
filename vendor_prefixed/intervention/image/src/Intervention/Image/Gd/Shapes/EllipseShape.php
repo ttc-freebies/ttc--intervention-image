@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Gd\Shapes;
+namespace Ttc\Intervention\Image\Gd\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Gd\Color;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\AbstractShape;
+use Ttc\Intervention\Image\Gd\Color;
+use Ttc\Intervention\Image\Image;
 
-class EllipseShape extends AbstractShape
+class EllipseShape extends \Ttc\Intervention\Image\AbstractShape
 {
     /**
      * Width of ellipse in pixels
@@ -42,16 +42,16 @@ class EllipseShape extends AbstractShape
      * @param  int     $y
      * @return boolean
      */
-    public function applyToImage(Image $image, $x = 0, $y = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $x = 0, $y = 0)
     {
         // parse background color
-        $background = new Color($this->background);
+        $background = new \Ttc\Intervention\Image\Gd\Color($this->background);
 
         if ($this->hasBorder()) {
             // slightly smaller ellipse to keep 1px bordered edges clean
             imagefilledellipse($image->getCore(), $x, $y, $this->width-1, $this->height-1, $background->getInt());
 
-            $border_color = new Color($this->border_color);
+            $border_color = new \Ttc\Intervention\Image\Gd\Color($this->border_color);
             imagesetthickness($image->getCore(), $this->border_width);
 
             // gd's imageellipse doesn't respect imagesetthickness so i use imagearc with 359.9 degrees here

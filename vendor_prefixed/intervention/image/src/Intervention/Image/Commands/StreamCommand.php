@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-class StreamCommand extends AbstractCommand
+class StreamCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Builds PSR7 stream based on image data. Method uses Guzzle PSR7
@@ -30,10 +30,10 @@ class StreamCommand extends AbstractCommand
      */
     protected function getStream($data)
     {
-        if (class_exists(\GuzzleHttp\Psr7\Utils::class)) {
-            return \GuzzleHttp\Psr7\Utils::streamFor($data); // guzzlehttp/psr7 >= 2.0
+        if (class_exists(\Ttc\GuzzleHttp\Psr7\Utils::class)) {
+            return \Ttc\GuzzleHttp\Psr7\Utils::streamFor($data); // guzzlehttp/psr7 >= 2.0
         }
 
-        return \GuzzleHttp\Psr7\stream_for($data); // guzzlehttp/psr7 < 2.0
+        return \Ttc\GuzzleHttp\Psr7\stream_for($data); // guzzlehttp/psr7 < 2.0
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Exception\NotReadableException;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
 
-class ExifCommand extends AbstractCommand
+class ExifCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Read Exif data from the given image
@@ -19,7 +19,7 @@ class ExifCommand extends AbstractCommand
     public function execute($image)
     {
         if (!function_exists('exif_read_data')) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "Reading Exif data is not supported by this PHP installation."
             );
         }
@@ -45,7 +45,7 @@ class ExifCommand extends AbstractCommand
             }
 
         } catch (\Exception $e) {
-            throw new NotReadableException(
+            throw new \Ttc\Intervention\Image\Exception\NotReadableException(
                 sprintf(
                     "Cannot read the Exif data from the filename (%s) provided ",
                     $image->dirname . '/' . $image->basename

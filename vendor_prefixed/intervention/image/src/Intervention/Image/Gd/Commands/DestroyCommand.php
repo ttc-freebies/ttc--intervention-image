@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class DestroyCommand extends AbstractCommand
+class DestroyCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Destroys current image core and frees up memory

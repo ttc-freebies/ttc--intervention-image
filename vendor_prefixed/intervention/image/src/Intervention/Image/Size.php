@@ -1,9 +1,9 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
 use Closure;
-use Intervention\Image\Exception\InvalidArgumentException;
+use Ttc\Intervention\Image\Exception\InvalidArgumentException;
 
 class Size
 {
@@ -35,11 +35,11 @@ class Size
      * @param int   $height
      * @param Point $pivot
      */
-    public function __construct($width = null, $height = null, Point $pivot = null)
+    public function __construct($width = null, $height = null, \Ttc\Intervention\Image\Point $pivot = null)
     {
         $this->width = is_numeric($width) ? intval($width) : 1;
         $this->height = is_numeric($height) ? intval($height) : 1;
-        $this->pivot = $pivot ? $pivot : new Point;
+        $this->pivot = $pivot ? $pivot : new \Ttc\Intervention\Image\Point;
     }
 
     /**
@@ -59,7 +59,7 @@ class Size
      *
      * @param Point $point
      */
-    public function setPivot(Point $point)
+    public function setPivot(\Ttc\Intervention\Image\Point $point)
     {
         $this->pivot = $point;
     }
@@ -105,7 +105,7 @@ class Size
     public function resize($width, $height, Closure $callback = null)
     {
         if (is_null($width) && is_null($height)) {
-            throw new InvalidArgumentException(
+            throw new \Ttc\Intervention\Image\Exception\InvalidArgumentException(
                 "Width or height needs to be defined."
             );
         }
@@ -141,23 +141,23 @@ class Size
     {
         $constraint = $this->getConstraint($callback);
 
-        if ($constraint->isFixed(Constraint::UPSIZE)) {
+        if ($constraint->isFixed(\Ttc\Intervention\Image\Constraint::UPSIZE)) {
             $max_width = $constraint->getSize()->getWidth();
             $max_height = $constraint->getSize()->getHeight();
         }
 
         if (is_numeric($width)) {
 
-            if ($constraint->isFixed(Constraint::UPSIZE)) {
+            if ($constraint->isFixed(\Ttc\Intervention\Image\Constraint::UPSIZE)) {
                 $this->width = ($width > $max_width) ? $max_width : $width;
             } else {
                 $this->width = $width;
             }
 
-            if ($constraint->isFixed(Constraint::ASPECTRATIO)) {
+            if ($constraint->isFixed(\Ttc\Intervention\Image\Constraint::ASPECTRATIO)) {
                 $h = max(1, intval(round($this->width / $constraint->getSize()->getRatio())));
 
-                if ($constraint->isFixed(Constraint::UPSIZE)) {
+                if ($constraint->isFixed(\Ttc\Intervention\Image\Constraint::UPSIZE)) {
                     $this->height = ($h > $max_height) ? $max_height : $h;
                 } else {
                     $this->height = $h;
@@ -177,23 +177,23 @@ class Size
     {
         $constraint = $this->getConstraint($callback);
 
-        if ($constraint->isFixed(Constraint::UPSIZE)) {
+        if ($constraint->isFixed(\Ttc\Intervention\Image\Constraint::UPSIZE)) {
             $max_width = $constraint->getSize()->getWidth();
             $max_height = $constraint->getSize()->getHeight();
         }
 
         if (is_numeric($height)) {
 
-            if ($constraint->isFixed(Constraint::UPSIZE)) {
+            if ($constraint->isFixed(\Ttc\Intervention\Image\Constraint::UPSIZE)) {
                 $this->height = ($height > $max_height) ? $max_height : $height;
             } else {
                 $this->height = $height;
             }
 
-            if ($constraint->isFixed(Constraint::ASPECTRATIO)) {
+            if ($constraint->isFixed(\Ttc\Intervention\Image\Constraint::ASPECTRATIO)) {
                 $w = max(1, intval(round($this->height * $constraint->getSize()->getRatio())));
 
-                if ($constraint->isFixed(Constraint::UPSIZE)) {
+                if ($constraint->isFixed(\Ttc\Intervention\Image\Constraint::UPSIZE)) {
                     $this->width = ($w > $max_width) ? $max_width : $w;
                 } else {
                     $this->width = $w;
@@ -209,12 +209,12 @@ class Size
      * @param  Size   $size
      * @return \Intervention\Image\Point
      */
-    public function relativePosition(Size $size)
+    public function relativePosition(\Ttc\Intervention\Image\Size $size)
     {
         $x = $this->pivot->x - $size->pivot->x;
         $y = $this->pivot->y - $size->pivot->y;
 
-        return new Point($x, $y);
+        return new \Ttc\Intervention\Image\Point($x, $y);
     }
 
     /**
@@ -223,7 +223,7 @@ class Size
      * @param  Size   $size
      * @return \Intervention\Image\Size
      */
-    public function fit(Size $size, $position = 'center')
+    public function fit(\Ttc\Intervention\Image\Size $size, $position = 'center')
     {
         // create size with auto height
         $auto_height = clone $size;
@@ -262,7 +262,7 @@ class Size
      * @param  Size   $size
      * @return boolean
      */
-    public function fitsInto(Size $size)
+    public function fitsInto(\Ttc\Intervention\Image\Size $size)
     {
         return ($this->width <= $size->width) && ($this->height <= $size->height);
     }
@@ -363,7 +363,7 @@ class Size
      */
     private function getConstraint(Closure $callback = null)
     {
-        $constraint = new Constraint(clone $this);
+        $constraint = new \Ttc\Intervention\Image\Constraint(clone $this);
 
         if (is_callable($callback)) {
             $callback($constraint);

@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Size;
+use Ttc\Intervention\Image\Size;
 
-class FitCommand extends ResizeCommand
+class FitCommand extends \Ttc\Intervention\Image\Gd\Commands\ResizeCommand
 {
     /**
      * Crops and resized an image at the same time
@@ -20,7 +20,7 @@ class FitCommand extends ResizeCommand
         $position = $this->argument(3)->type('string')->value('center');
 
         // calculate size
-        $cropped = $image->getSize()->fit(new Size($width, $height), $position);
+        $cropped = $image->getSize()->fit(new \Ttc\Intervention\Image\Size($width, $height), $position);
         $resized = clone $cropped;
         $resized = $resized->resize($width, $height, $constraints);
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Imagick\Shapes;
+namespace Ttc\Intervention\Image\Imagick\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Image;
-use Intervention\Image\Imagick\Color;
+use Ttc\Intervention\Image\AbstractShape;
+use Ttc\Intervention\Image\Image;
+use Ttc\Intervention\Image\Imagick\Color;
 
-class PolygonShape extends AbstractShape
+class PolygonShape extends \Ttc\Intervention\Image\AbstractShape
 {
     /**
      * Array of points of polygon
@@ -33,17 +33,17 @@ class PolygonShape extends AbstractShape
      * @param  int     $y
      * @return boolean
      */
-    public function applyToImage(Image $image, $x = 0, $y = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $x = 0, $y = 0)
     {
         $polygon = new \ImagickDraw;
 
         // set background
-        $bgcolor = new Color($this->background);
+        $bgcolor = new \Ttc\Intervention\Image\Imagick\Color($this->background);
         $polygon->setFillColor($bgcolor->getPixel());
 
         // set border
         if ($this->hasBorder()) {
-            $border_color = new Color($this->border_color);
+            $border_color = new \Ttc\Intervention\Image\Imagick\Color($this->border_color);
             $polygon->setStrokeWidth($this->border_width);
             $polygon->setStrokeColor($border_color->getPixel());
         }

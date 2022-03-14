@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
-use Intervention\Image\Exception\NotWritableException;
-use Intervention\Image\Exception\RuntimeException;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamInterface;
+use Ttc\Intervention\Image\Exception\NotWritableException;
+use Ttc\Intervention\Image\Exception\RuntimeException;
+use Ttc\Psr\Http\Message\ResponseInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * @method \Intervention\Image\Image backup(string $name = 'default')                                                                                                     Backups current image state as fallback for reset method under an optional name. Overwrites older state on every call, unless a different name is passed.
@@ -53,7 +53,7 @@ use Psr\Http\Message\StreamInterface;
  * @method StreamInterface           stream(string $format = null, int $quality = 90)                                                                                 Build PSR-7 compatible StreamInterface with current image in given format and quality.
  * @method ResponseInterface         psrResponse(string $format = null, int $quality = 90)                                                                            Build PSR-7 compatible ResponseInterface with current image in given format and quality.
  */
-class Image extends File
+class Image extends \Ttc\Intervention\Image\File
 {
     /**
      * Instance of current image driver
@@ -89,7 +89,7 @@ class Image extends File
      * @param AbstractDriver $driver
      * @param mixed  $core
      */
-    public function __construct(AbstractDriver $driver = null, $core = null)
+    public function __construct(\Ttc\Intervention\Image\AbstractDriver $driver = null, $core = null)
     {
         $this->driver = $driver;
         $this->core = $core;
@@ -134,7 +134,7 @@ class Image extends File
         $path = is_null($path) ? $this->basePath() : $path;
 
         if (is_null($path)) {
-            throw new NotWritableException(
+            throw new \Ttc\Intervention\Image\Exception\NotWritableException(
                 "Can't write to undefined path."
             );
         }
@@ -147,7 +147,7 @@ class Image extends File
         $saved = @file_put_contents($path, $data);
 
         if ($saved === false) {
-            throw new NotWritableException(
+            throw new \Ttc\Intervention\Image\Exception\NotWritableException(
                 "Can't write image data to path ({$path})"
             );
         }
@@ -164,7 +164,7 @@ class Image extends File
      * @param  FiltersFilterInterface $filter
      * @return \Intervention\Image\Image
      */
-    public function filter(Filters\FilterInterface $filter)
+    public function filter(\Ttc\Intervention\Image\Filters\FilterInterface $filter)
     {
         return $filter->applyFilter($this);
     }
@@ -183,7 +183,7 @@ class Image extends File
      * Sets current image driver
      * @param AbstractDriver $driver
      */
-    public function setDriver(AbstractDriver $driver)
+    public function setDriver(\Ttc\Intervention\Image\AbstractDriver $driver)
     {
         $this->driver = $driver;
 
@@ -223,7 +223,7 @@ class Image extends File
         $name = is_null($name) ? 'default' : $name;
 
         if ( ! $this->backupExists($name)) {
-            throw new RuntimeException(
+            throw new \Ttc\Intervention\Image\Exception\RuntimeException(
                 "Backup with name ({$name}) not available. Call backup() before reset()."
             );
         }

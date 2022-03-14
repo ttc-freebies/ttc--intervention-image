@@ -1,6 +1,6 @@
 <?php
 
-namespace Psr\Http\Message;
+namespace Ttc\Psr\Http\Message;
 
 /**
  * Representation of an outgoing, server-side response.
@@ -17,7 +17,7 @@ namespace Psr\Http\Message;
  * be implemented such that they retain the internal state of the current
  * message and return an instance that contains the changed state.
  */
-interface ResponseInterface extends MessageInterface
+interface ResponseInterface extends \Ttc\Psr\Http\Message\MessageInterface
 {
     /**
      * Gets the response status code.

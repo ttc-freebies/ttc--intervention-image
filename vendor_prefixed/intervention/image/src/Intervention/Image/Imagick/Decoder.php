@@ -1,13 +1,13 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Ttc\Intervention\Image\Imagick;
 
-use Intervention\Image\AbstractDecoder;
-use Intervention\Image\Exception\NotReadableException;
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\AbstractDecoder;
+use Ttc\Intervention\Image\Exception\NotReadableException;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Image;
 
-class Decoder extends AbstractDecoder
+class Decoder extends \Ttc\Intervention\Image\AbstractDecoder
 {
     /**
      * Initiates new image from path in filesystem
@@ -26,7 +26,7 @@ class Decoder extends AbstractDecoder
             $core->setImageType(defined('\Imagick::IMGTYPE_TRUECOLORALPHA') ? \Imagick::IMGTYPE_TRUECOLORALPHA : \Imagick::IMGTYPE_TRUECOLORMATTE);
 
         } catch (\ImagickException $e) {
-            throw new \Intervention\Image\Exception\NotReadableException(
+            throw new \Ttc\Intervention\Image\Exception\NotReadableException(
                 "Unable to read image from path ({$path}).",
                 0,
                 $e
@@ -48,7 +48,7 @@ class Decoder extends AbstractDecoder
      */
     public function initFromGdResource($resource)
     {
-        throw new NotSupportedException(
+        throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
             'Imagick driver is unable to init from GD resource.'
         );
     }
@@ -68,7 +68,7 @@ class Decoder extends AbstractDecoder
         // reset image orientation
         $object->setImageOrientation(\Imagick::ORIENTATION_UNDEFINED);
 
-        return new Image(new Driver, $object);
+        return new \Ttc\Intervention\Image\Image(new \Ttc\Intervention\Image\Imagick\Driver, $object);
     }
 
     /**
@@ -87,7 +87,7 @@ class Decoder extends AbstractDecoder
             $core->readImageBlob($binary);
 
         } catch (\ImagickException $e) {
-            throw new NotReadableException(
+            throw new \Ttc\Intervention\Image\Exception\NotReadableException(
                 "Unable to read image from binary data.",
                 0,
                 $e

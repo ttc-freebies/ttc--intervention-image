@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
 use Illuminate\Support\Facades\Response as IlluminateResponse;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
@@ -35,7 +35,7 @@ class Response
      * @param string  $format
      * @param int     $quality
      */
-    public function __construct(Image $image, $format = null, $quality = null)
+    public function __construct(\Ttc\Intervention\Image\Image $image, $format = null, $quality = null)
     {
         $this->image = $image;
         $this->format = $format ? $format : $image->mime;

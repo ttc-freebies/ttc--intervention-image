@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Converts Guzzle streams into PHP stream resources.
@@ -31,7 +31,7 @@ final class StreamWrapper
      *
      * @throws \InvalidArgumentException if stream is not readable or writable
      */
-    public static function getResource(StreamInterface $stream)
+    public static function getResource(\Ttc\Psr\Http\Message\StreamInterface $stream)
     {
         self::register();
 
@@ -52,7 +52,7 @@ final class StreamWrapper
      *
      * @return resource
      */
-    public static function createStreamContext(StreamInterface $stream)
+    public static function createStreamContext(\Ttc\Psr\Http\Message\StreamInterface $stream)
     {
         return stream_context_create([
             'guzzle' => ['stream' => $stream]

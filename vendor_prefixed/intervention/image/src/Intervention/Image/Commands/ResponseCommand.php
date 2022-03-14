@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-use Intervention\Image\Response;
+use Ttc\Intervention\Image\Response;
 
-class ResponseCommand extends AbstractCommand
+class ResponseCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Builds HTTP response from given image
@@ -17,7 +17,7 @@ class ResponseCommand extends AbstractCommand
         $format = $this->argument(0)->value();
         $quality = $this->argument(1)->between(0, 100)->value();
 
-        $response = new Response($image, $format, $quality);
+        $response = new \Ttc\Intervention\Image\Response($image, $format, $quality);
 
         $this->setOutput($response->make());
 

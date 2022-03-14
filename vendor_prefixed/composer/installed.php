@@ -1,13 +1,13 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => 'dev-test',
+        'version' => 'dev-test',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '049c881185bf473c4d4a2b2beff3f5d33c99e94f',
+        'reference' => '563c749dc699f3223b01098e4d333ce0e37507f4',
         'name' => 'ttc/intervention-image',
-        'dev' => false,
+        'dev' => true,
     ),
     'versions' => array(
         'guzzlehttp/psr7' => array(
@@ -68,12 +68,12 @@
             'dev_requirement' => false,
         ),
         'ttc/intervention-image' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => 'dev-test',
+            'version' => 'dev-test',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '049c881185bf473c4d4a2b2beff3f5d33c99e94f',
+            'reference' => '563c749dc699f3223b01098e4d333ce0e37507f4',
             'dev_requirement' => false,
         ),
     ),

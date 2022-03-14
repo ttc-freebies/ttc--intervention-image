@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-class HeightenCommand extends ResizeCommand
+class HeightenCommand extends \Ttc\Intervention\Image\Imagick\Commands\ResizeCommand
 {
     /**
      * Resize image proportionally to given height

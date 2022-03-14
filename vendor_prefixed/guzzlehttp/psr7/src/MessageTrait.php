@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\MessageInterface;
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\MessageInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Trait implementing functionality common to requests and responses.
@@ -29,7 +29,7 @@ trait MessageTrait
         return $this->protocol;
     }
 
-    public function withProtocolVersion($version): MessageInterface
+    public function withProtocolVersion($version): \Ttc\Psr\Http\Message\MessageInterface
     {
         if ($this->protocol === $version) {
             return $this;
@@ -68,7 +68,7 @@ trait MessageTrait
         return implode(', ', $this->getHeader($header));
     }
 
-    public function withHeader($header, $value): MessageInterface
+    public function withHeader($header, $value): \Ttc\Psr\Http\Message\MessageInterface
     {
         $this->assertHeader($header);
         $value = $this->normalizeHeaderValue($value);
@@ -84,7 +84,7 @@ trait MessageTrait
         return $new;
     }
 
-    public function withAddedHeader($header, $value): MessageInterface
+    public function withAddedHeader($header, $value): \Ttc\Psr\Http\Message\MessageInterface
     {
         $this->assertHeader($header);
         $value = $this->normalizeHeaderValue($value);
@@ -102,7 +102,7 @@ trait MessageTrait
         return $new;
     }
 
-    public function withoutHeader($header): MessageInterface
+    public function withoutHeader($header): \Ttc\Psr\Http\Message\MessageInterface
     {
         $normalized = strtolower($header);
 
@@ -118,16 +118,16 @@ trait MessageTrait
         return $new;
     }
 
-    public function getBody(): StreamInterface
+    public function getBody(): \Ttc\Psr\Http\Message\StreamInterface
     {
         if (!$this->stream) {
-            $this->stream = Utils::streamFor('');
+            $this->stream = \Ttc\GuzzleHttp\Psr7\Utils::streamFor('');
         }
 
         return $this->stream;
     }
 
-    public function withBody(StreamInterface $body): MessageInterface
+    public function withBody(\Ttc\Psr\Http\Message\StreamInterface $body): \Ttc\Psr\Http\Message\MessageInterface
     {
         if ($body === $this->stream) {
             return $this;

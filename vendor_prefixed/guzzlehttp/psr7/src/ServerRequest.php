@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
 use InvalidArgumentException;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileInterface;
-use Psr\Http\Message\UriInterface;
+use Ttc\Psr\Http\Message\ServerRequestInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\UploadedFileInterface;
+use Ttc\Psr\Http\Message\UriInterface;
 
 /**
  * Server-side HTTP request
@@ -24,7 +24,7 @@ use Psr\Http\Message\UriInterface;
  * implemented such that they retain the internal state of the current
  * message and return a new instance that contains the changed state.
  */
-class ServerRequest extends Request implements ServerRequestInterface
+class ServerRequest extends \Ttc\GuzzleHttp\Psr7\Request implements \Ttc\Psr\Http\Message\ServerRequestInterface
 {
     /**
      * @var array
@@ -89,7 +89,7 @@ class ServerRequest extends Request implements ServerRequestInterface
         $normalized = [];
 
         foreach ($files as $key => $value) {
-            if ($value instanceof UploadedFileInterface) {
+            if ($value instanceof \Ttc\Psr\Http\Message\UploadedFileInterface) {
                 $normalized[$key] = $value;
             } elseif (is_array($value) && isset($value['tmp_name'])) {
                 $normalized[$key] = self::createUploadedFileFromSpec($value);
@@ -120,7 +120,7 @@ class ServerRequest extends Request implements ServerRequestInterface
             return self::normalizeNestedFileSpec($value);
         }
 
-        return new UploadedFile(
+        return new \Ttc\GuzzleHttp\Psr7\UploadedFile(
             $value['tmp_name'],
             (int) $value['size'],
             (int) $value['error'],
@@ -163,15 +163,15 @@ class ServerRequest extends Request implements ServerRequestInterface
      * $_FILES
      * $_SERVER
      */
-    public static function fromGlobals(): ServerRequestInterface
+    public static function fromGlobals(): \Ttc\Psr\Http\Message\ServerRequestInterface
     {
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
         $headers = getallheaders();
         $uri = self::getUriFromGlobals();
-        $body = new CachingStream(new LazyOpenStream('php://input', 'r+'));
+        $body = new \Ttc\GuzzleHttp\Psr7\CachingStream(new \Ttc\GuzzleHttp\Psr7\LazyOpenStream('php://input', 'r+'));
         $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? str_replace('HTTP/', '', $_SERVER['SERVER_PROTOCOL']) : '1.1';
 
-        $serverRequest = new ServerRequest($method, $uri, $headers, $body, $protocol, $_SERVER);
+        $serverRequest = new \Ttc\GuzzleHttp\Psr7\ServerRequest($method, $uri, $headers, $body, $protocol, $_SERVER);
 
         return $serverRequest
             ->withCookieParams($_COOKIE)
@@ -197,9 +197,9 @@ class ServerRequest extends Request implements ServerRequestInterface
     /**
      * Get a Uri populated with values from $_SERVER.
      */
-    public static function getUriFromGlobals(): UriInterface
+    public static function getUriFromGlobals(): \Ttc\Psr\Http\Message\UriInterface
     {
-        $uri = new Uri('');
+        $uri = new \Ttc\GuzzleHttp\Psr7\Uri('');
 
         $uri = $uri->withScheme(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http');
 
@@ -251,7 +251,7 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $this->uploadedFiles;
     }
 
-    public function withUploadedFiles(array $uploadedFiles): ServerRequestInterface
+    public function withUploadedFiles(array $uploadedFiles): \Ttc\Psr\Http\Message\ServerRequestInterface
     {
         $new = clone $this;
         $new->uploadedFiles = $uploadedFiles;
@@ -264,7 +264,7 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $this->cookieParams;
     }
 
-    public function withCookieParams(array $cookies): ServerRequestInterface
+    public function withCookieParams(array $cookies): \Ttc\Psr\Http\Message\ServerRequestInterface
     {
         $new = clone $this;
         $new->cookieParams = $cookies;
@@ -277,7 +277,7 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $this->queryParams;
     }
 
-    public function withQueryParams(array $query): ServerRequestInterface
+    public function withQueryParams(array $query): \Ttc\Psr\Http\Message\ServerRequestInterface
     {
         $new = clone $this;
         $new->queryParams = $query;
@@ -295,7 +295,7 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $this->parsedBody;
     }
 
-    public function withParsedBody($data): ServerRequestInterface
+    public function withParsedBody($data): \Ttc\Psr\Http\Message\ServerRequestInterface
     {
         $new = clone $this;
         $new->parsedBody = $data;
@@ -322,7 +322,7 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $this->attributes[$attribute];
     }
 
-    public function withAttribute($attribute, $value): ServerRequestInterface
+    public function withAttribute($attribute, $value): \Ttc\Psr\Http\Message\ServerRequestInterface
     {
         $new = clone $this;
         $new->attributes[$attribute] = $value;
@@ -330,7 +330,7 @@ class ServerRequest extends Request implements ServerRequestInterface
         return $new;
     }
 
-    public function withoutAttribute($attribute): ServerRequestInterface
+    public function withoutAttribute($attribute): \Ttc\Psr\Http\Message\ServerRequestInterface
     {
         if (false === array_key_exists($attribute, $this->attributes)) {
             return $this;

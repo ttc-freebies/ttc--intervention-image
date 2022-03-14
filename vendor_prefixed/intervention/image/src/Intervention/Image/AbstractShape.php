@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
 abstract class AbstractShape
 {
@@ -33,7 +33,7 @@ abstract class AbstractShape
      * @param  int     $posy
      * @return boolean
      */
-    abstract public function applyToImage(Image $image, $posx = 0, $posy = 0);
+    abstract public function applyToImage(\Ttc\Intervention\Image\Image $image, $posx = 0, $posy = 0);
 
     /**
      * Set text to be written

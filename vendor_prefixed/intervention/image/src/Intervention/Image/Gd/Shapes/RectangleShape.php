@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Gd\Shapes;
+namespace Ttc\Intervention\Image\Gd\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Gd\Color;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\AbstractShape;
+use Ttc\Intervention\Image\Gd\Color;
+use Ttc\Intervention\Image\Image;
 
-class RectangleShape extends AbstractShape
+class RectangleShape extends \Ttc\Intervention\Image\AbstractShape
 {
     /**
      * X-Coordinate of top-left point
@@ -60,13 +60,13 @@ class RectangleShape extends AbstractShape
      * @param  int     $y
      * @return boolean
      */
-    public function applyToImage(Image $image, $x = 0, $y = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $x = 0, $y = 0)
     {
-        $background = new Color($this->background);
+        $background = new \Ttc\Intervention\Image\Gd\Color($this->background);
         imagefilledrectangle($image->getCore(), $this->x1, $this->y1, $this->x2, $this->y2, $background->getInt());
 
         if ($this->hasBorder()) {
-            $border_color = new Color($this->border_color);
+            $border_color = new \Ttc\Intervention\Image\Gd\Color($this->border_color);
             imagesetthickness($image->getCore(), $this->border_width);
             imagerectangle($image->getCore(), $this->x1, $this->y1, $this->x2, $this->y2, $border_color->getInt());
         }

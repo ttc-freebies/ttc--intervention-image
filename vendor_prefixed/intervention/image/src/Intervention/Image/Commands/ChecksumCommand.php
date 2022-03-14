@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-class ChecksumCommand extends AbstractCommand
+class ChecksumCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Calculates checksum of given image

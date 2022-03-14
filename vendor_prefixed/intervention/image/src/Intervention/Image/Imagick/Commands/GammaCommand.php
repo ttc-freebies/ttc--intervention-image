@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class GammaCommand extends AbstractCommand
+class GammaCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Applies gamma correction to a given image

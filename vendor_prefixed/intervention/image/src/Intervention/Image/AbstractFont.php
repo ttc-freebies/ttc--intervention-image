@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
 abstract class AbstractFont
 {
@@ -68,7 +68,7 @@ abstract class AbstractFont
      * @param  int     $posy
      * @return boolean
      */
-    abstract public function applyToImage(Image $image, $posx = 0, $posy = 0);
+    abstract public function applyToImage(\Ttc\Intervention\Image\Image $image, $posx = 0, $posy = 0);
 
     /**
      * Calculates bounding box of current font setting

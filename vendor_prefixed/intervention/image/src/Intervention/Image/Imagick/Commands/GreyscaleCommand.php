@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class GreyscaleCommand extends AbstractCommand
+class GreyscaleCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Turns an image into a greyscale version

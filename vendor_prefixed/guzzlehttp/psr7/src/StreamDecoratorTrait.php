@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * Stream decorator trait
@@ -16,7 +16,7 @@ trait StreamDecoratorTrait
     /**
      * @param StreamInterface $stream Stream to decorate
      */
-    public function __construct(StreamInterface $stream)
+    public function __construct(\Ttc\Psr\Http\Message\StreamInterface $stream)
     {
         $this->stream = $stream;
     }
@@ -55,7 +55,7 @@ trait StreamDecoratorTrait
 
     public function getContents(): string
     {
-        return Utils::copyToString($this);
+        return \Ttc\GuzzleHttp\Psr7\Utils::copyToString($this);
     }
 
     /**
@@ -148,7 +148,7 @@ trait StreamDecoratorTrait
      *
      * @throws \BadMethodCallException
      */
-    protected function createStream(): StreamInterface
+    protected function createStream(): \Ttc\Psr\Http\Message\StreamInterface
     {
         throw new \BadMethodCallException('Not implemented');
     }

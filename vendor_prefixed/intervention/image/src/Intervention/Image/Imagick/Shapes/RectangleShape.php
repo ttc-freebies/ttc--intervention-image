@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Imagick\Shapes;
+namespace Ttc\Intervention\Image\Imagick\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Image;
-use Intervention\Image\Imagick\Color;
+use Ttc\Intervention\Image\AbstractShape;
+use Ttc\Intervention\Image\Image;
+use Ttc\Intervention\Image\Imagick\Color;
 
-class RectangleShape extends AbstractShape
+class RectangleShape extends \Ttc\Intervention\Image\AbstractShape
 {
     /**
      * X-Coordinate of top-left point
@@ -60,17 +60,17 @@ class RectangleShape extends AbstractShape
      * @param  int     $y
      * @return boolean
      */
-    public function applyToImage(Image $image, $x = 0, $y = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $x = 0, $y = 0)
     {
         $rectangle = new \ImagickDraw;
 
         // set background
-        $bgcolor = new Color($this->background);
+        $bgcolor = new \Ttc\Intervention\Image\Imagick\Color($this->background);
         $rectangle->setFillColor($bgcolor->getPixel());
 
         // set border
         if ($this->hasBorder()) {
-            $border_color = new Color($this->border_color);
+            $border_color = new \Ttc\Intervention\Image\Imagick\Color($this->border_color);
             $rectangle->setStrokeWidth($this->border_width);
             $rectangle->setStrokeColor($border_color->getPixel());
         }

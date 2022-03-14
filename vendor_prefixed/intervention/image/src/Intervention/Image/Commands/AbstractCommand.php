@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-use Intervention\Image\Commands\Argument;
+use Ttc\Intervention\Image\Commands\Argument;
 
 abstract class AbstractCommand
 {
@@ -46,7 +46,7 @@ abstract class AbstractCommand
      */
     public function argument($key)
     {
-        return new Argument($this, $key);
+        return new \Ttc\Intervention\Image\Commands\Argument($this, $key);
     }
 
     /**

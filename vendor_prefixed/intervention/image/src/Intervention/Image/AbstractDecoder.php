@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
-use GuzzleHttp\Psr7\Stream;
-use Intervention\Image\Exception\NotReadableException;
-use Psr\Http\Message\StreamInterface;
+use Ttc\GuzzleHttp\Psr7\Stream;
+use Ttc\Intervention\Image\Exception\NotReadableException;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 abstract class AbstractDecoder
 {
@@ -82,7 +82,7 @@ abstract class AbstractDecoder
             return $this->initFromBinary($data);
         }
 
-        throw new NotReadableException(
+        throw new \Ttc\Intervention\Image\Exception\NotReadableException(
             "Unable to init from given url (".$url.")."
         );
     }
@@ -95,8 +95,8 @@ abstract class AbstractDecoder
      */
     public function initFromStream($stream)
     {
-        if (!$stream instanceof StreamInterface) {
-            $stream = new Stream($stream);
+        if (!$stream instanceof \Ttc\Psr\Http\Message\StreamInterface) {
+            $stream = new \Ttc\GuzzleHttp\Psr7\Stream($stream);
         }
 
         try {
@@ -125,7 +125,7 @@ abstract class AbstractDecoder
             return $this->initFromBinary($data);
         }
 
-        throw new NotReadableException(
+        throw new \Ttc\Intervention\Image\Exception\NotReadableException(
             "Unable to init from given stream"
         );
     }
@@ -223,7 +223,7 @@ abstract class AbstractDecoder
      */
     public function isStream()
     {
-        if ($this->data instanceof StreamInterface) return true;
+        if ($this->data instanceof \Ttc\Psr\Http\Message\StreamInterface) return true;
         if (!is_resource($this->data)) return false;
         if (get_resource_type($this->data) !== 'stream') return false;
 
@@ -348,7 +348,7 @@ abstract class AbstractDecoder
                 return $this->initFromBinary(base64_decode($this->data));
 
             default:
-                throw new NotReadableException("Image source not readable");
+                throw new \Ttc\Intervention\Image\Exception\NotReadableException("Image source not readable");
         }
     }
 

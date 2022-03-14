@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
 class Constraint
 {
@@ -33,7 +33,7 @@ class Constraint
      *
      * @param Size $size
      */
-    public function __construct(Size $size)
+    public function __construct(\Ttc\Intervention\Image\Size $size)
     {
         $this->size = $size;
     }

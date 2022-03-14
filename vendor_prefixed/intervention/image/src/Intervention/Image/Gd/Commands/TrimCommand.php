@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Gd\Color;
+use Ttc\Intervention\Image\Gd\Color;
 
-class TrimCommand extends ResizeCommand
+class TrimCommand extends \Ttc\Intervention\Image\Gd\Commands\ResizeCommand
 {
     /**
      * Trims away parts of an image
@@ -62,7 +62,7 @@ class TrimCommand extends ResizeCommand
 
         // pick base color
         if ($checkTransparency) {
-            $color = new Color; // color will only be used to compare alpha channel
+            $color = new \Ttc\Intervention\Image\Gd\Color; // color will only be used to compare alpha channel
         } else {
             $color = $image->pickColor($base_x, $base_y, 'object');
         }

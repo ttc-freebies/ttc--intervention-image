@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
-use Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
 
 abstract class AbstractDriver
 {
@@ -120,7 +120,7 @@ abstract class AbstractDriver
             return $classnameGlobal;
         }
 
-        throw new NotSupportedException(
+        throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
             "Command ({$name}) is not available for driver ({$drivername})."
         );
     }

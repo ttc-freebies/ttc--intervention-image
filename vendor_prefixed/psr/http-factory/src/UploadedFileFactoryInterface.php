@@ -1,6 +1,6 @@
 <?php
 
-namespace Psr\Http\Message;
+namespace Ttc\Psr\Http\Message;
 
 interface UploadedFileFactoryInterface
 {
@@ -25,10 +25,10 @@ interface UploadedFileFactoryInterface
      * @throws \InvalidArgumentException If the file resource is not readable.
      */
     public function createUploadedFile(
-        StreamInterface $stream,
+        \Ttc\Psr\Http\Message\StreamInterface $stream,
         int $size = null,
         int $error = \UPLOAD_ERR_OK,
         string $clientFilename = null,
         string $clientMediaType = null
-    ): UploadedFileInterface;
+    ): \Ttc\Psr\Http\Message\UploadedFileInterface;
 }

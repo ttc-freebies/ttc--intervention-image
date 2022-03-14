@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
 use Closure;
 
-class CircleCommand extends AbstractCommand
+class CircleCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Draw a circle centered on given image

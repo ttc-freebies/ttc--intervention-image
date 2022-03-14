@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Gd\Shapes;
+namespace Ttc\Intervention\Image\Gd\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Gd\Color;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\AbstractShape;
+use Ttc\Intervention\Image\Gd\Color;
+use Ttc\Intervention\Image\Image;
 
-class LineShape extends AbstractShape
+class LineShape extends \Ttc\Intervention\Image\AbstractShape
 {
     /**
      * Starting point x-coordinate of line
@@ -67,7 +67,7 @@ class LineShape extends AbstractShape
      */
     public function width($width)
     {
-        throw new \Intervention\Image\Exception\NotSupportedException(
+        throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
             "Line width is not supported by GD driver."
         );
     }
@@ -80,9 +80,9 @@ class LineShape extends AbstractShape
      * @param  int     $y
      * @return boolean
      */
-    public function applyToImage(Image $image, $x = 0, $y = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $x = 0, $y = 0)
     {
-        $color = new Color($this->color);
+        $color = new \Ttc\Intervention\Image\Gd\Color($this->color);
         imageline($image->getCore(), $x, $y, $this->x, $this->y, $color->getInt());
 
         return true;

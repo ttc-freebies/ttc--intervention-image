@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
 use InvalidArgumentException;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UriInterface;
+use Ttc\Psr\Http\Message\RequestInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\UriInterface;
 
 /**
  * PSR-7 request implementation.
  */
-class Request implements RequestInterface
+class Request implements \Ttc\Psr\Http\Message\RequestInterface
 {
-    use MessageTrait;
+    use \Ttc\GuzzleHttp\Psr7\MessageTrait;
 
     /** @var string */
     private $method;
@@ -40,8 +40,8 @@ class Request implements RequestInterface
         string $version = '1.1'
     ) {
         $this->assertMethod($method);
-        if (!($uri instanceof UriInterface)) {
-            $uri = new Uri($uri);
+        if (!($uri instanceof \Ttc\Psr\Http\Message\UriInterface)) {
+            $uri = new \Ttc\GuzzleHttp\Psr7\Uri($uri);
         }
 
         $this->method = strtoupper($method);
@@ -54,7 +54,7 @@ class Request implements RequestInterface
         }
 
         if ($body !== '' && $body !== null) {
-            $this->stream = Utils::streamFor($body);
+            $this->stream = \Ttc\GuzzleHttp\Psr7\Utils::streamFor($body);
         }
     }
 
@@ -75,7 +75,7 @@ class Request implements RequestInterface
         return $target;
     }
 
-    public function withRequestTarget($requestTarget): RequestInterface
+    public function withRequestTarget($requestTarget): \Ttc\Psr\Http\Message\RequestInterface
     {
         if (preg_match('#\s#', $requestTarget)) {
             throw new InvalidArgumentException(
@@ -93,7 +93,7 @@ class Request implements RequestInterface
         return $this->method;
     }
 
-    public function withMethod($method): RequestInterface
+    public function withMethod($method): \Ttc\Psr\Http\Message\RequestInterface
     {
         $this->assertMethod($method);
         $new = clone $this;
@@ -101,12 +101,12 @@ class Request implements RequestInterface
         return $new;
     }
 
-    public function getUri(): UriInterface
+    public function getUri(): \Ttc\Psr\Http\Message\UriInterface
     {
         return $this->uri;
     }
 
-    public function withUri(UriInterface $uri, $preserveHost = false): RequestInterface
+    public function withUri(\Ttc\Psr\Http\Message\UriInterface $uri, $preserveHost = false): \Ttc\Psr\Http\Message\RequestInterface
     {
         if ($uri === $this->uri) {
             return $this;

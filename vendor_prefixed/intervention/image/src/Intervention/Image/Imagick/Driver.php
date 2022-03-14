@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Imagick;
+namespace Ttc\Intervention\Image\Imagick;
 
-use Intervention\Image\AbstractDriver;
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\AbstractDriver;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Image;
 
-class Driver extends AbstractDriver
+class Driver extends \Ttc\Intervention\Image\AbstractDriver
 {
     /**
      * Creates new instance of driver
@@ -14,16 +14,16 @@ class Driver extends AbstractDriver
      * @param Decoder $decoder
      * @param Encoder $encoder
      */
-    public function __construct(Decoder $decoder = null, Encoder $encoder = null)
+    public function __construct(\Ttc\Intervention\Image\Imagick\Decoder $decoder = null, \Ttc\Intervention\Image\Imagick\Encoder $encoder = null)
     {
         if ( ! $this->coreAvailable()) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 "ImageMagick module not available with this PHP installation."
             );
         }
 
-        $this->decoder = $decoder ? $decoder : new Decoder;
-        $this->encoder = $encoder ? $encoder : new Encoder;
+        $this->decoder = $decoder ? $decoder : new \Ttc\Intervention\Image\Imagick\Decoder;
+        $this->encoder = $encoder ? $encoder : new \Ttc\Intervention\Image\Imagick\Encoder;
     }
 
     /**
@@ -36,7 +36,7 @@ class Driver extends AbstractDriver
      */
     public function newImage($width, $height, $background = null)
     {
-        $background = new Color($background);
+        $background = new \Ttc\Intervention\Image\Imagick\Color($background);
 
         // create empty core
         $core = new \Imagick;
@@ -46,7 +46,7 @@ class Driver extends AbstractDriver
         $core->setColorspace(\Imagick::COLORSPACE_UNDEFINED);
 
         // build image
-        $image = new Image(new static, $core);
+        $image = new \Ttc\Intervention\Image\Image(new static, $core);
 
         return $image;
     }
@@ -59,7 +59,7 @@ class Driver extends AbstractDriver
      */
     public function parseColor($value)
     {
-        return new Color($value);
+        return new \Ttc\Intervention\Image\Imagick\Color($value);
     }
 
     /**

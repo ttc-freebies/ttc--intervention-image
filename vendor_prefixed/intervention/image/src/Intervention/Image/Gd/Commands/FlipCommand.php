@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-class FlipCommand extends ResizeCommand
+class FlipCommand extends \Ttc\Intervention\Image\Gd\Commands\ResizeCommand
 {
     /**
      * Mirrors an image

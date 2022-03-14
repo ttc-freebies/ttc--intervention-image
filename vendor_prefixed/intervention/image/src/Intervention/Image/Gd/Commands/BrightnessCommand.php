@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Gd\Commands;
+namespace Ttc\Intervention\Image\Gd\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
 
-class BrightnessCommand extends AbstractCommand
+class BrightnessCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Changes image brightness

@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Exception;
+namespace Ttc\Intervention\Image\Exception;
 
-class NotFoundException extends ImageException
+class NotFoundException extends \Ttc\Intervention\Image\Exception\ImageException
 {
     # nothing to override
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Gd;
+namespace Ttc\Intervention\Image\Gd;
 
-use Intervention\Image\Exception\NotSupportedException;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\Image;
 
-class Font extends \Intervention\Image\AbstractFont
+class Font extends \Ttc\Intervention\Image\AbstractFont
 {
     /**
      * Get font size in points
@@ -28,7 +28,7 @@ class Font extends \Intervention\Image\AbstractFont
         $internalfont = is_numeric($internalfont) ? $internalfont : false;
 
         if ( ! in_array($internalfont, [1, 2, 3, 4, 5])) {
-            throw new NotSupportedException(
+            throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
                 sprintf('Internal GD font (%s) not available. Use only 1-5.', $internalfont)
             );
         }
@@ -136,10 +136,10 @@ class Font extends \Intervention\Image\AbstractFont
      * @param  int     $posy
      * @return void
      */
-    public function applyToImage(Image $image, $posx = 0, $posy = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $posx = 0, $posy = 0)
     {
         // parse text color
-        $color = new Color($this->color);
+        $color = new \Ttc\Intervention\Image\Gd\Color($this->color);
 
         if ($this->hasApplicableFontFile()) {
 
@@ -269,7 +269,7 @@ class Font extends \Intervention\Image\AbstractFont
      */
     public function kerning($kerning)
     {
-        throw new \Intervention\Image\Exception\NotSupportedException(
+        throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
             "Kerning is not supported by GD driver."
         );
     }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Intervention\Image\Gd\Shapes;
+namespace Ttc\Intervention\Image\Gd\Shapes;
 
-use Intervention\Image\AbstractShape;
-use Intervention\Image\Gd\Color;
-use Intervention\Image\Image;
+use Ttc\Intervention\Image\AbstractShape;
+use Ttc\Intervention\Image\Gd\Color;
+use Ttc\Intervention\Image\Image;
 
-class PolygonShape extends AbstractShape
+class PolygonShape extends \Ttc\Intervention\Image\AbstractShape
 {
     /**
      * Array of points of polygon
@@ -33,13 +33,13 @@ class PolygonShape extends AbstractShape
      * @param  int     $y
      * @return boolean
      */
-    public function applyToImage(Image $image, $x = 0, $y = 0)
+    public function applyToImage(\Ttc\Intervention\Image\Image $image, $x = 0, $y = 0)
     {
-        $background = new Color($this->background);
+        $background = new \Ttc\Intervention\Image\Gd\Color($this->background);
         imagefilledpolygon($image->getCore(), $this->points, intval(count($this->points) / 2), $background->getInt());
         
         if ($this->hasBorder()) {
-            $border_color = new Color($this->border_color);
+            $border_color = new \Ttc\Intervention\Image\Gd\Color($this->border_color);
             imagesetthickness($image->getCore(), $this->border_width);
             imagepolygon($image->getCore(), $this->points, intval(count($this->points) / 2), $border_color->getInt());
         }

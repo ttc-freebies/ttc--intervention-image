@@ -1,6 +1,6 @@
 <?php
 
-namespace Intervention\Image;
+namespace Ttc\Intervention\Image;
 
 use Closure;
 
@@ -18,9 +18,9 @@ class ImageManagerStatic
      *
      * @param ImageManager $manager
      */
-    public function __construct(ImageManager $manager = null)
+    public function __construct(\Ttc\Intervention\Image\ImageManager $manager = null)
     {
-        self::$manager = $manager ? $manager : new ImageManager;
+        self::$manager = $manager ? $manager : new \Ttc\Intervention\Image\ImageManager;
     }
 
     /**
@@ -30,7 +30,7 @@ class ImageManagerStatic
      */
     public static function getManager()
     {
-        return self::$manager ? self::$manager : new ImageManager;
+        return self::$manager ? self::$manager : new \Ttc\Intervention\Image\ImageManager;
     }
 
     /**

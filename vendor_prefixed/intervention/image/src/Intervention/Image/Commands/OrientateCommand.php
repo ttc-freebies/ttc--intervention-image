@@ -1,8 +1,8 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-class OrientateCommand extends AbstractCommand
+class OrientateCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Correct image orientation according to Exif data

@@ -1,10 +1,10 @@
 <?php
 
-namespace Intervention\Image\Commands;
+namespace Ttc\Intervention\Image\Commands;
 
-use GuzzleHttp\Psr7\Response;
+use Ttc\GuzzleHttp\Psr7\Response;
 
-class PsrResponseCommand extends AbstractCommand
+class PsrResponseCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Builds PSR7 compatible response. May replace "response" command in
@@ -31,7 +31,7 @@ class PsrResponseCommand extends AbstractCommand
             $image->getEncoded()
         );
 
-        $this->setOutput(new Response(
+        $this->setOutput(new \Ttc\GuzzleHttp\Psr7\Response(
             200,
             [
                 'Content-Type'   => $mimetype,

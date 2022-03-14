@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\MessageInterface;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Ttc\Psr\Http\Message\MessageInterface;
+use Ttc\Psr\Http\Message\RequestInterface;
+use Ttc\Psr\Http\Message\ResponseInterface;
 
 final class Message
 {
@@ -15,16 +15,16 @@ final class Message
      *
      * @param MessageInterface $message Message to convert to a string.
      */
-    public static function toString(MessageInterface $message): string
+    public static function toString(\Ttc\Psr\Http\Message\MessageInterface $message): string
     {
-        if ($message instanceof RequestInterface) {
+        if ($message instanceof \Ttc\Psr\Http\Message\RequestInterface) {
             $msg = trim($message->getMethod() . ' '
                     . $message->getRequestTarget())
                 . ' HTTP/' . $message->getProtocolVersion();
             if (!$message->hasHeader('host')) {
                 $msg .= "\r\nHost: " . $message->getUri()->getHost();
             }
-        } elseif ($message instanceof ResponseInterface) {
+        } elseif ($message instanceof \Ttc\Psr\Http\Message\ResponseInterface) {
             $msg = 'HTTP/' . $message->getProtocolVersion() . ' '
                 . $message->getStatusCode() . ' '
                 . $message->getReasonPhrase();
@@ -53,7 +53,7 @@ final class Message
      * @param MessageInterface $message    The message to get the body summary
      * @param int              $truncateAt The maximum allowed size of the summary
      */
-    public static function bodySummary(MessageInterface $message, int $truncateAt = 120): ?string
+    public static function bodySummary(\Ttc\Psr\Http\Message\MessageInterface $message, int $truncateAt = 120): ?string
     {
         $body = $message->getBody();
 
@@ -93,7 +93,7 @@ final class Message
      *
      * @throws \RuntimeException
      */
-    public static function rewindBody(MessageInterface $message): void
+    public static function rewindBody(\Ttc\Psr\Http\Message\MessageInterface $message): void
     {
         $body = $message->getBody();
 
@@ -137,16 +137,16 @@ final class Message
 
         if (preg_match("/(?:^HTTP\/|^[A-Z]+ \S+ HTTP\/)(\d+(?:\.\d+)?)/i", $startLine, $matches) && $matches[1] === '1.0') {
             // Header folding is deprecated for HTTP/1.1, but allowed in HTTP/1.0
-            $rawHeaders = preg_replace(Rfc7230::HEADER_FOLD_REGEX, ' ', $rawHeaders);
+            $rawHeaders = preg_replace(\Ttc\GuzzleHttp\Psr7\Rfc7230::HEADER_FOLD_REGEX, ' ', $rawHeaders);
         }
 
         /** @var array[] $headerLines */
-        $count = preg_match_all(Rfc7230::HEADER_REGEX, $rawHeaders, $headerLines, PREG_SET_ORDER);
+        $count = preg_match_all(\Ttc\GuzzleHttp\Psr7\Rfc7230::HEADER_REGEX, $rawHeaders, $headerLines, PREG_SET_ORDER);
 
         // If these aren't the same, then one line didn't match and there's an invalid header.
         if ($count !== substr_count($rawHeaders, "\n")) {
             // Folding is deprecated, see https://tools.ietf.org/html/rfc7230#section-3.2.4
-            if (preg_match(Rfc7230::HEADER_FOLD_REGEX, $rawHeaders)) {
+            if (preg_match(\Ttc\GuzzleHttp\Psr7\Rfc7230::HEADER_FOLD_REGEX, $rawHeaders)) {
                 throw new \InvalidArgumentException('Invalid header syntax: Obsolete line folding');
             }
 
@@ -194,7 +194,7 @@ final class Message
      *
      * @param string $message Request message string.
      */
-    public static function parseRequest(string $message): RequestInterface
+    public static function parseRequest(string $message): \Ttc\Psr\Http\Message\RequestInterface
     {
         $data = self::parseMessage($message);
         $matches = [];
@@ -204,7 +204,7 @@ final class Message
         $parts = explode(' ', $data['start-line'], 3);
         $version = isset($parts[2]) ? explode('/', $parts[2])[1] : '1.1';
 
-        $request = new Request(
+        $request = new \Ttc\GuzzleHttp\Psr7\Request(
             $parts[0],
             $matches[1] === '/' ? self::parseRequestUri($parts[1], $data['headers']) : $parts[1],
             $data['headers'],
@@ -220,7 +220,7 @@ final class Message
      *
      * @param string $message Response message string.
      */
-    public static function parseResponse(string $message): ResponseInterface
+    public static function parseResponse(string $message): \Ttc\Psr\Http\Message\ResponseInterface
     {
         $data = self::parseMessage($message);
         // According to https://tools.ietf.org/html/rfc7230#section-3.1.2 the space
@@ -231,7 +231,7 @@ final class Message
         }
         $parts = explode(' ', $data['start-line'], 3);
 
-        return new Response(
+        return new \Ttc\GuzzleHttp\Psr7\Response(
             (int) $parts[1],
             $data['headers'],
             $data['body'],

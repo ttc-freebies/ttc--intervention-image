@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Size;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Size;
 
-class FitCommand extends AbstractCommand
+class FitCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Crops and resized an image at the same time
@@ -21,7 +21,7 @@ class FitCommand extends AbstractCommand
         $position = $this->argument(3)->type('string')->value('center');
 
         // calculate size
-        $cropped = $image->getSize()->fit(new Size($width, $height), $position);
+        $cropped = $image->getSize()->fit(new \Ttc\Intervention\Image\Size($width, $height), $position);
         $resized = clone $cropped;
         $resized = $resized->resize($width, $height, $constraints);
 

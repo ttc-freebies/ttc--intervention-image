@@ -1,13 +1,13 @@
 <?php
 
-namespace Intervention\Image\Imagick\Commands;
+namespace Ttc\Intervention\Image\Imagick\Commands;
 
-use Intervention\Image\Commands\AbstractCommand;
-use Intervention\Image\Exception\InvalidArgumentException;
-use Intervention\Image\Point;
-use Intervention\Image\Size;
+use Ttc\Intervention\Image\Commands\AbstractCommand;
+use Ttc\Intervention\Image\Exception\InvalidArgumentException;
+use Ttc\Intervention\Image\Point;
+use Ttc\Intervention\Image\Size;
 
-class CropCommand extends AbstractCommand
+class CropCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
 {
     /**
      * Crop an image instance
@@ -23,13 +23,13 @@ class CropCommand extends AbstractCommand
         $y = $this->argument(3)->type('digit')->value();
 
         if (is_null($width) || is_null($height)) {
-            throw new InvalidArgumentException(
+            throw new \Ttc\Intervention\Image\Exception\InvalidArgumentException(
                 "Width and height of cutout needs to be defined."
             );
         }
 
-        $cropped = new Size($width, $height);
-        $position = new Point($x, $y);
+        $cropped = new \Ttc\Intervention\Image\Size($width, $height);
+        $position = new \Ttc\Intervention\Image\Point($x, $y);
 
         // align boxes
         if (is_null($x) && is_null($y)) {

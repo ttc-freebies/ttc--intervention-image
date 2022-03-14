@@ -1,11 +1,11 @@
 <?php
 
-namespace Intervention\Image\Gd;
+namespace Ttc\Intervention\Image\Gd;
 
-use Intervention\Image\AbstractColor;
-use Intervention\Image\Exception\NotSupportedException;
+use Ttc\Intervention\Image\AbstractColor;
+use Ttc\Intervention\Image\Exception\NotSupportedException;
 
-class Color extends AbstractColor
+class Color extends \Ttc\Intervention\Image\AbstractColor
 {
     /**
      * RGB Red value of current color instance
@@ -135,7 +135,7 @@ class Color extends AbstractColor
      */
     public function initFromObject($value)
     {
-        throw new NotSupportedException(
+        throw new \Ttc\Intervention\Image\Exception\NotSupportedException(
             "GD colors cannot init from ImagickPixel objects."
         );
     }
@@ -188,7 +188,7 @@ class Color extends AbstractColor
      * @param  int       $tolerance
      * @return boolean
      */
-    public function differs(AbstractColor $color, $tolerance = 0)
+    public function differs(\Ttc\Intervention\Image\AbstractColor $color, $tolerance = 0)
     {
         $color_tolerance = round($tolerance * 2.55);
         $alpha_tolerance = round($tolerance * 1.27);

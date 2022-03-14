@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace GuzzleHttp\Psr7;
+namespace Ttc\GuzzleHttp\Psr7;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamInterface;
+use Ttc\Psr\Http\Message\ResponseInterface;
+use Ttc\Psr\Http\Message\StreamInterface;
 
 /**
  * PSR-7 response implementation.
  */
-class Response implements ResponseInterface
+class Response implements \Ttc\Psr\Http\Message\ResponseInterface
 {
-    use MessageTrait;
+    use \Ttc\GuzzleHttp\Psr7\MessageTrait;
 
     /** Map of standard HTTP status code/reason phrases */
     private const PHRASES = [
@@ -103,7 +103,7 @@ class Response implements ResponseInterface
         $this->statusCode = $status;
 
         if ($body !== '' && $body !== null) {
-            $this->stream = Utils::streamFor($body);
+            $this->stream = \Ttc\GuzzleHttp\Psr7\Utils::streamFor($body);
         }
 
         $this->setHeaders($headers);
@@ -126,7 +126,7 @@ class Response implements ResponseInterface
         return $this->reasonPhrase;
     }
 
-    public function withStatus($code, $reasonPhrase = ''): ResponseInterface
+    public function withStatus($code, $reasonPhrase = ''): \Ttc\Psr\Http\Message\ResponseInterface
     {
         $this->assertStatusCodeIsInteger($code);
         $code = (int) $code;
