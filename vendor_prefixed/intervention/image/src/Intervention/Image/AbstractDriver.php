@@ -111,8 +111,8 @@ abstract class AbstractDriver
         }
 
         $drivername = $this->getDriverName();
-        $classnameLocal = sprintf('\Intervention\Image\%s\Commands\%sCommand', $drivername, ucfirst($name));
-        $classnameGlobal = sprintf('\Intervention\Image\Commands\%sCommand', ucfirst($name));
+        $classnameLocal = sprintf('\Ttc\Intervention\Image\%s\Commands\%sCommand', $drivername, ucfirst($name));
+        $classnameGlobal = sprintf('\Ttc\Intervention\Image\Commands\%sCommand', ucfirst($name));
 
         if (class_exists($classnameLocal)) {
             return $classnameLocal;

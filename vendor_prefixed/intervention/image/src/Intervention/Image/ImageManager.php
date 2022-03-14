@@ -106,7 +106,7 @@ class ImageManager
     {
         if (is_string($this->config['driver'])) {
             $drivername = ucfirst($this->config['driver']);
-            $driverclass = sprintf('Intervention\\Image\\%s\\Driver', $drivername);
+            $driverclass = sprintf('Ttc\\Intervention\\Image\\%s\\Driver', $drivername);
 
             if (class_exists($driverclass)) {
                 return new $driverclass;
