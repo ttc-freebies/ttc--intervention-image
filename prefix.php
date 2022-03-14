@@ -1,6 +1,6 @@
 <?php
 $composerFiles = [
-  __DIR__ . '/vendor/composer/autoload_classmap.php',
+  // __DIR__ . '/vendor/composer/autoload_classmap.php',
   __DIR__ . '/vendor/composer/autoload_files.php',
   __DIR__ . '/vendor/composer/autoload_namespaces.php',
   __DIR__ . '/vendor/composer/autoload_psr4.php',

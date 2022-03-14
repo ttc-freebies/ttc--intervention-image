@@ -5,7 +5,6 @@ use Rector\Core\Configuration\Option;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Rector\Renaming\Rector\Namespace_\RenameNamespaceRector;
 
-var_dump('hello');
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator): void {
   // Set some params
   $parameters = $containerConfigurator->parameters();
@@ -29,15 +28,17 @@ return static function (\Symfony\Component\DependencyInjection\Loader\Configurat
   ]);
 
   // Namespace renaming
-  // get services (needed for register a single rule)
-  $services = $containerConfigurator->services();
-
-  // register a single rule
-  $services->set(Rector\Renaming\Rector\Namespace_\RenameNamespaceRector::class)
+  $containerConfigurator
+    ->services()
+    ->set(Rector\Renaming\Rector\Namespace_\RenameNamespaceRector::class)
     // ->set(NoUnusedImportsFixer::class)
     ->configure([
-      'GuzzleHttp'    => 'Ttc\GuzzleHttp',
-      'Intervention'  => 'Ttc\Intervention',
-      'Psr'           => 'Ttc\Psr',
+      'GuzzleHttp'         => 'Ttc\GuzzleHttp',
+      'GuzzleHttp\Psr7'    => 'Ttc\GuzzleHttp\Psr7',
+      'Intervention'       => 'Ttc\Intervention',
+      'Intervention\Image' => 'Ttc\Intervention\Image',
+      'Psr'                => 'Ttc\Psr',
+      'Psr\Http'           => 'Ttc\Psr\Http',
+      'Psr\Http\Message'   => 'Ttc\Psr\Http\Message',
     ]);
 };

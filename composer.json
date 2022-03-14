@@ -3,7 +3,7 @@
   "description": "Intervention image prefixed for ttc",
   "license": "MIT",
   "require-dev": {
-    "php": "^7.4|^8.0",
+    "php": "^7.4|^8.0|^8.1",
     "ext-json": "*"
   },
   "require": {
