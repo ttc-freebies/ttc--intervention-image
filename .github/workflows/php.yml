@@ -29,6 +29,9 @@ jobs:
     - name: Install rector
       run: composer global require rector/rector
 
+    - name: Delete existing
+      run: rm -rf vendor
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
@@ -37,12 +40,6 @@ jobs:
 
     - name: Fix the composer entries
       run: php prefix.php
-
-    - name: Delete old prefixed
-      run: rm -rf vendor_prefixed
-
-    - name: Create prefixed
-      run: mv vendor vendor_prefixed
 
     - name: Patch composer
       run: npm install && npm run mapit

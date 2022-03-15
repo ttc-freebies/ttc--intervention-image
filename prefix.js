@@ -11,10 +11,10 @@ const parser = new engine({
   }
 });
 
-if (fs.existsSync('./vendor_prefixed/guzzlehttp/psr7/vendor-bin')) fs.rmSync('./vendor_prefixed/guzzlehttp/psr7/vendor-bin', { recursive: true });
-if (fs.existsSync('./vendor_prefixed/intervention/image/.github')) fs.rmSync('./vendor_prefixed/intervention/image/.github', { recursive: true });
+if (fs.existsSync('./vendor/guzzlehttp/psr7/vendor-bin')) fs.rmSync('./vendor/guzzlehttp/psr7/vendor-bin', { recursive: true });
+if (fs.existsSync('./vendor/intervention/image/.github')) fs.rmSync('./vendor/intervention/image/.github', { recursive: true });
 
-//vendor_prefixed/intervention/image/.github
+//vendor/intervention/image/.github
 function getFiles(dir, files_) {
   files_ = files_ || [];
   const files = fs.readdirSync(dir);
@@ -30,7 +30,7 @@ function getFiles(dir, files_) {
 }
 
 const collection = [];
-const allPHPFiles = getFiles('./vendor_prefixed');
+const allPHPFiles = getFiles('./vendor');
 allPHPFiles.forEach(function(file) {
   if (
     file.endsWith('.md') ||
@@ -51,10 +51,6 @@ allPHPFiles.forEach(function(file) {
     if (
       /Intervention\\\\Image\\\\%s\\\\Driver/.test(fileContent) ||
       /Intervention\\Image\\%s\\Commands\\%sCommand/.test(fileContent)
-
-      // fileContent.includes('Intervention\\Image\\%s\\Driver') ||
-      // fileContent.includes('\Intervention\Image\%s\Commands\%sCommand') ||
-      // fileContent.includes('\Intervention\Image\Commands\%sCommand')
      ) {
        console.log('hey')
       fileContent = fileContent.replace(/'Intervention\\\\Image\\\\%s\\\\Driver'/gm, "'Ttc\\\\Intervention\\\\Image\\\\%s\\\\Driver'");
@@ -65,7 +61,7 @@ allPHPFiles.forEach(function(file) {
      }
 
 
-    const fileAST = parser.parseCode(fs.readFileSync(file));
+    const fileAST = parser.parseCode(fileContent);
     if (
       fileAST
       && fileAST.children
@@ -99,4 +95,4 @@ return array(
 );
 `;
 
-fs.writeFileSync('./vendor_prefixed/composer/autoload_classmap.php', text);
+fs.writeFileSync('./vendor/composer/autoload_classmap.php', text);
