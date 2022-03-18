@@ -44,7 +44,7 @@ jobs:
     - name: Patch composer
       run: npm install && npm run mapit
 
-    - uses: stefanzweifel/git-auto-commit-action@v4.13.1
+    - uses: stefanzweifel/git-auto-commit-action@v4.14.0
       with:
         commit_message: Commit artifacts...
         branch: ${{ github.head_ref }}
