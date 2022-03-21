@@ -47,7 +47,7 @@ class ImageManager
      *
      * @param  mixed $data
      *
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Intervention\Image\Image
      */
     public function make($data)
     {
@@ -61,7 +61,7 @@ class ImageManager
      * @param  int   $height
      * @param  mixed $background
      *
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Intervention\Image\Image
      */
     public function canvas($width, $height, $background = null)
     {
@@ -100,7 +100,7 @@ class ImageManager
     /**
      * Creates a driver instance according to config settings
      *
-     * @return \Intervention\Image\AbstractDriver
+     * @return \Ttc\Intervention\Image\AbstractDriver
      */
     private function createDriver()
     {

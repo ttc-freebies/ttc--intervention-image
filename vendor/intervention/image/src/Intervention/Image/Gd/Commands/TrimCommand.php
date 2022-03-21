@@ -9,7 +9,7 @@ class TrimCommand extends \Ttc\Intervention\Image\Gd\Commands\ResizeCommand
     /**
      * Trims away parts of an image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

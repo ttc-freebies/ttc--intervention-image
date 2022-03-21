@@ -9,8 +9,8 @@ interface FilterInterface
     /**
      * Applies filter to given image
      *
-     * @param  \Intervention\Image\Image $image
-     * @return \Intervention\Image\Image
+     * @param \Ttc\Intervention\Image\Image $image
+     * @return \Ttc\Intervention\Image\Image
      */
     public function applyFilter(\Ttc\Intervention\Image\Image $image);
 }

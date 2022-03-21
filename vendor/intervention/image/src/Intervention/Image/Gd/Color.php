@@ -39,7 +39,7 @@ class Color extends \Ttc\Intervention\Image\AbstractColor
      * Initiates color object from integer
      *
      * @param  int $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     public function initFromInteger($value)
     {
@@ -53,7 +53,7 @@ class Color extends \Ttc\Intervention\Image\AbstractColor
      * Initiates color object from given array
      *
      * @param  array $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     public function initFromArray($array)
     {
@@ -82,7 +82,7 @@ class Color extends \Ttc\Intervention\Image\AbstractColor
      * Initiates color object from given string
      *
      * @param  string $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     public function initFromString($value)
     {
@@ -100,7 +100,7 @@ class Color extends \Ttc\Intervention\Image\AbstractColor
      * @param  int $r
      * @param  int $g
      * @param  int $b
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     public function initFromRgb($r, $g, $b)
     {
@@ -117,7 +117,7 @@ class Color extends \Ttc\Intervention\Image\AbstractColor
      * @param  int     $g
      * @param  int     $b
      * @param  float   $a
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     public function initFromRgba($r, $g, $b, $a = 1)
     {
@@ -131,7 +131,7 @@ class Color extends \Ttc\Intervention\Image\AbstractColor
      * Initiates color object from given ImagickPixel object
      *
      * @param  ImagickPixel $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     public function initFromObject($value)
     {

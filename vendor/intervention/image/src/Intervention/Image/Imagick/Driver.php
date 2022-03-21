@@ -32,7 +32,7 @@ class Driver extends \Ttc\Intervention\Image\AbstractDriver
      * @param  int     $width
      * @param  int     $height
      * @param  mixed   $background
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Intervention\Image\Image
      */
     public function newImage($width, $height, $background = null)
     {

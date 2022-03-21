@@ -9,7 +9,7 @@ class IptcCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
     /**
      * Read Iptc data from the given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

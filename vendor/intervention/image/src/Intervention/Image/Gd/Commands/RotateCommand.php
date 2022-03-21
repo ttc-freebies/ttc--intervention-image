@@ -10,7 +10,7 @@ class RotateCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
     /**
      * Rotates image counter clockwise
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

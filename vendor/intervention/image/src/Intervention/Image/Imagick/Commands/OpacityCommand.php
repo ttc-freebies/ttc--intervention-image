@@ -9,7 +9,7 @@ class OpacityCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
     /**
      * Defines opacity of an image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

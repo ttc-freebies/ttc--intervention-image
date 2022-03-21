@@ -7,7 +7,7 @@ class WidenCommand extends \Ttc\Intervention\Image\Imagick\Commands\ResizeComman
     /**
      * Resize image proportionally to given width
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

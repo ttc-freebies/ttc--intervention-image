@@ -9,7 +9,7 @@ class LimitColorsCommand extends \Ttc\Intervention\Image\Commands\AbstractComman
     /**
      * Reduces colors of a given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

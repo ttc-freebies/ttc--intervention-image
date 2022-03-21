@@ -10,7 +10,7 @@ class TrimCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
     /**
      * Trims away parts of an image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)
