@@ -9,7 +9,7 @@ class FitCommand extends \Ttc\Intervention\Image\Gd\Commands\ResizeCommand
     /**
      * Crops and resized an image at the same time
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

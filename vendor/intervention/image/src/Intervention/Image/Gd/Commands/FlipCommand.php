@@ -7,7 +7,7 @@ class FlipCommand extends \Ttc\Intervention\Image\Gd\Commands\ResizeCommand
     /**
      * Mirrors an image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

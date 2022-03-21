@@ -8,7 +8,7 @@ class StreamCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
      * Builds PSR7 stream based on image data. Method uses Guzzle PSR7
      * implementation as easiest choice.
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)
@@ -26,7 +26,7 @@ class StreamCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
      * Create stream from given data
      *
      * @param  string $data
-     * @return \Psr\Http\Message\StreamInterface
+     * @return \Ttc\Psr\Http\Message\StreamInterface
      */
     protected function getStream($data)
     {

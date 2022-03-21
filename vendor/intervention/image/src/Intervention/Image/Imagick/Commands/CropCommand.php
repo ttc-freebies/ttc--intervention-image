@@ -12,7 +12,7 @@ class CropCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
     /**
      * Crop an image instance
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

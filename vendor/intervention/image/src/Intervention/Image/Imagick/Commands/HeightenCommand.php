@@ -7,7 +7,7 @@ class HeightenCommand extends \Ttc\Intervention\Image\Imagick\Commands\ResizeCom
     /**
      * Resize image proportionally to given height
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

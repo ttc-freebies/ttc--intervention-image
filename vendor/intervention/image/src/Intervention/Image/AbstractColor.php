@@ -11,7 +11,7 @@ abstract class AbstractColor
      * Initiates color object from integer
      *
      * @param  int $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     abstract public function initFromInteger($value);
 
@@ -19,7 +19,7 @@ abstract class AbstractColor
      * Initiates color object from given array
      *
      * @param  array $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     abstract public function initFromArray($value);
 
@@ -27,7 +27,7 @@ abstract class AbstractColor
      * Initiates color object from given string
      *
      * @param  string $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     abstract public function initFromString($value);
 
@@ -35,7 +35,7 @@ abstract class AbstractColor
      * Initiates color object from given ImagickPixel object
      *
      * @param  ImagickPixel $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     abstract public function initFromObject($value);
 
@@ -45,7 +45,7 @@ abstract class AbstractColor
      * @param  int $r
      * @param  int $g
      * @param  int $b
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     abstract public function initFromRgb($r, $g, $b);
 
@@ -56,7 +56,7 @@ abstract class AbstractColor
      * @param  int $g
      * @param  int $b
      * @param  float   $a
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     abstract public function initFromRgba($r, $g, $b, $a);
 
@@ -112,7 +112,7 @@ abstract class AbstractColor
      * Parses given value as color
      *
      * @param  mixed $value
-     * @return \Intervention\Image\AbstractColor
+     * @return \Ttc\Intervention\Image\AbstractColor
      */
     public function parse($value)
     {

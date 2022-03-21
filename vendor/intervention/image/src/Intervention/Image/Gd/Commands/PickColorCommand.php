@@ -10,7 +10,7 @@ class PickColorCommand extends \Ttc\Intervention\Image\Commands\AbstractCommand
     /**
      * Read color information from a certain position
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)
