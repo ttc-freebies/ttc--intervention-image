@@ -35,14 +35,14 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: Fix the composer entries
+      run: npm install && node pre.js
+
     - name: Process with Rector
       run: ~/.composer/vendor/bin/rector process vendor
 
-    - name: Fix the composer entries
-      run: php prefix.php
-
     - name: Patch composer
-      run: npm install && npm run mapit
+      run: node prefix.js
 
     - uses: stefanzweifel/git-auto-commit-action@v4.14.0
       with:
