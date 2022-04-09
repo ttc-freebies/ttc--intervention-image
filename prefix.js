@@ -53,7 +53,7 @@ allPHPFiles.forEach(function(file) {
 
 fs.rmSync('./vendor/intervention/image/src/Intervention/Image/Facades', {recursive: true});
 
-fs.mkdirSync('../vendor/Intervention', { recursive: true });
-fs.cpSync('./vendor/Intervention/Image/src/intervention/image', '../vendor/Intervention/Image', { recursive: true });
+// fs.mkdirSync('../vendor/Intervention', { recursive: true });
+// fs.cpSync('./vendor/Intervention/Image/src/intervention/image', '../vendor/Intervention/Image', { recursive: true });
 
-fs.rmSync('./vendor', {recursive: true});
+// fs.rmSync('./vendor', {recursive: true});
