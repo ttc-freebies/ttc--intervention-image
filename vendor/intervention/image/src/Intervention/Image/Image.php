@@ -114,7 +114,7 @@ class Image extends \Ttc\Freebies\Intervention\Image\File
      *
      * @param  string  $format
      * @param  int     $quality
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function encode($format = null, $quality = 90)
     {
@@ -127,7 +127,7 @@ class Image extends \Ttc\Freebies\Intervention\Image\File
      * @param  string  $path
      * @param  int     $quality
      * @param  string  $format
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function save($path = null, $quality = null, $format = null)
     {
@@ -162,7 +162,7 @@ class Image extends \Ttc\Freebies\Intervention\Image\File
      * Runs a given filter on current image
      *
      * @param  FiltersFilterInterface $filter
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function filter(\Ttc\Freebies\Intervention\Image\Filters\FilterInterface $filter)
     {
@@ -172,7 +172,7 @@ class Image extends \Ttc\Freebies\Intervention\Image\File
     /**
      * Returns current image driver
      *
-     * @return \Intervention\Image\AbstractDriver
+     * @return \Ttc\Freebies\Intervention\Image\AbstractDriver
      */
     public function getDriver()
     {

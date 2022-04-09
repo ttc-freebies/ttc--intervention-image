@@ -9,7 +9,7 @@ class InterlaceCommand extends \Ttc\Freebies\Intervention\Image\Commands\Abstrac
     /**
      * Toggles interlaced encoding mode
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

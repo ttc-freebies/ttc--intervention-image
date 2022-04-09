@@ -9,7 +9,7 @@ class BackupCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractCo
     /**
      * Saves a backups of current state of image core
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

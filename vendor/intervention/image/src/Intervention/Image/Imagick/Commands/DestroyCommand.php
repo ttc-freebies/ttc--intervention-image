@@ -9,7 +9,7 @@ class DestroyCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractC
     /**
      * Destroys current image core and frees up memory
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

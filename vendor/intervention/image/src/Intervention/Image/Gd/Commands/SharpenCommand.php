@@ -9,7 +9,7 @@ class SharpenCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractC
     /**
      * Sharpen image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

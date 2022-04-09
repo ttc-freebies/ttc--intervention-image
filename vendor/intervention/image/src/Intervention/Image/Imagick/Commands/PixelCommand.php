@@ -10,7 +10,7 @@ class PixelCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractCom
     /**
      * Draws one pixel to a given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

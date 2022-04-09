@@ -13,7 +13,7 @@ class Decoder extends \Ttc\Freebies\Intervention\Image\AbstractDecoder
      * Initiates new image from path in filesystem
      *
      * @param  string $path
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function initFromPath($path)
     {
@@ -44,7 +44,7 @@ class Decoder extends \Ttc\Freebies\Intervention\Image\AbstractDecoder
      * Initiates new image from GD resource
      *
      * @param  Resource $resource
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function initFromGdResource($resource)
     {
@@ -57,7 +57,7 @@ class Decoder extends \Ttc\Freebies\Intervention\Image\AbstractDecoder
      * Initiates new image from Imagick object
      *
      * @param  Imagick $object
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function initFromImagick(\Imagick $object)
     {
@@ -75,7 +75,7 @@ class Decoder extends \Ttc\Freebies\Intervention\Image\AbstractDecoder
      * Initiates new image from binary data
      *
      * @param  string $data
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function initFromBinary($binary)
     {

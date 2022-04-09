@@ -10,7 +10,7 @@ class PolygonCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractC
     /**
      * Draw a polygon on given image
      *
-     * @param  \Intervention\Image\image $image
+     * @param \Ttc\Freebies\Intervention\Image\image $image
      * @return boolean
      */
     public function execute($image)

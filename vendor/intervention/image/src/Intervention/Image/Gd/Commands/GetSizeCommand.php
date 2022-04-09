@@ -10,7 +10,7 @@ class GetSizeCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractC
     /**
      * Reads size of given image instance in pixels
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

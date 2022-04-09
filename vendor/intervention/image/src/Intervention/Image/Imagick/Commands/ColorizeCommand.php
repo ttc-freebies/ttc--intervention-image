@@ -9,7 +9,7 @@ class ColorizeCommand extends \Ttc\Freebies\Intervention\Image\Commands\Abstract
     /**
      * Changes balance of different RGB color channels
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

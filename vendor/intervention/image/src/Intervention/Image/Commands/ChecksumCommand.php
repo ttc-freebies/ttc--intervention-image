@@ -7,7 +7,7 @@ class ChecksumCommand extends \Ttc\Freebies\Intervention\Image\Commands\Abstract
     /**
      * Calculates checksum of given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

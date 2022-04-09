@@ -13,7 +13,7 @@ class ExifCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractComm
      * Note: Windows PHP Users - in order to use this method you will need to
      * enable the mbstring and exif extensions within the php.ini file.
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

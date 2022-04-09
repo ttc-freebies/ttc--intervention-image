@@ -9,7 +9,7 @@ class BlurCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractComm
     /**
      * Applies blur effect on image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

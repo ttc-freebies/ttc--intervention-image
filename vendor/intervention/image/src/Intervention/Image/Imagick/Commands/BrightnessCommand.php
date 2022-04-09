@@ -9,7 +9,7 @@ class BrightnessCommand extends \Ttc\Freebies\Intervention\Image\Commands\Abstra
     /**
      * Changes image brightness
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

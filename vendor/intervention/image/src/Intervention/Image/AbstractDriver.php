@@ -9,14 +9,14 @@ abstract class AbstractDriver
     /**
      * Decoder instance to init images from
      *
-     * @var \Intervention\Image\AbstractDecoder
+     * @var \Ttc\Freebies\Intervention\Image\AbstractDecoder
      */
     public $decoder;
 
     /**
      * Image encoder instance
      *
-     * @var \Intervention\Image\AbstractEncoder
+     * @var \Ttc\Freebies\Intervention\Image\AbstractEncoder
      */
     public $encoder;
 
@@ -26,7 +26,7 @@ abstract class AbstractDriver
      * @param  int     $width
      * @param  int     $height
      * @param  string  $background
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     abstract public function newImage($width, $height, $background);
 
@@ -59,7 +59,7 @@ abstract class AbstractDriver
      * Initiates new image from given input
      *
      * @param  mixed $data
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function init($data)
     {
@@ -72,7 +72,7 @@ abstract class AbstractDriver
      * @param  Image   $image
      * @param  string  $format
      * @param  int     $quality
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public function encode($image, $format, $quality)
     {
@@ -85,7 +85,7 @@ abstract class AbstractDriver
      * @param  Image  $image
      * @param  string $name
      * @param  array $arguments
-     * @return \Intervention\Image\Commands\AbstractCommand
+     * @return \Ttc\Freebies\Intervention\Image\Commands\AbstractCommand
      */
     public function executeCommand($image, $name, $arguments)
     {

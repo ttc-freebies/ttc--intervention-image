@@ -10,7 +10,7 @@ class CropCommand extends \Ttc\Freebies\Intervention\Image\Gd\Commands\ResizeCom
     /**
      * Crop an image instance
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

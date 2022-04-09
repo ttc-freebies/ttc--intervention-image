@@ -17,7 +17,7 @@ class Constraint
     /**
      * Constraint size
      *
-     * @var \Intervention\Image\Size
+     * @var \Ttc\Freebies\Intervention\Image\Size
      */
     private $size;
 
@@ -41,7 +41,7 @@ class Constraint
     /**
      * Returns current size of constraint
      *
-     * @return \Intervention\Image\Size
+     * @return \Ttc\Freebies\Intervention\Image\Size
      */
     public function getSize()
     {

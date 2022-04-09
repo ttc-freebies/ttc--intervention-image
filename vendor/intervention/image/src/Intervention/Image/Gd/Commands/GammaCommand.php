@@ -9,7 +9,7 @@ class GammaCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractCom
     /**
      * Applies gamma correction to a given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

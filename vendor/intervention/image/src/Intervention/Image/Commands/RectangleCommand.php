@@ -9,7 +9,7 @@ class RectangleCommand extends \Ttc\Freebies\Intervention\Image\Commands\Abstrac
     /**
      * Draws rectangle on given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

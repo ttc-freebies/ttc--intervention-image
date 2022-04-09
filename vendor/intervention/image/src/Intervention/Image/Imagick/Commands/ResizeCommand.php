@@ -9,7 +9,7 @@ class ResizeCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractCo
     /**
      * Resizes image dimensions
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

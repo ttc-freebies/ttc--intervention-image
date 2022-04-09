@@ -9,7 +9,7 @@ class InvertCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractCo
     /**
      * Inverts colors of an image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

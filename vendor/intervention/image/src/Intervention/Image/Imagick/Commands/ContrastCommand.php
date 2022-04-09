@@ -9,7 +9,7 @@ class ContrastCommand extends \Ttc\Freebies\Intervention\Image\Commands\Abstract
     /**
      * Changes contrast of image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

@@ -8,7 +8,7 @@ class TextCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractComm
 {
     /**
      * Write text on given image
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

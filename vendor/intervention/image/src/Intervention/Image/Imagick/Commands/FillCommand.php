@@ -13,7 +13,7 @@ class FillCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractComm
     /**
      * Fills image with color or pattern
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

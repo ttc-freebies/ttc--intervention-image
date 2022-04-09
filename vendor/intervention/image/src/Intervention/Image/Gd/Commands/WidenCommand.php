@@ -7,7 +7,7 @@ class WidenCommand extends \Ttc\Freebies\Intervention\Image\Gd\Commands\ResizeCo
     /**
      * Resize image proportionally to given width
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

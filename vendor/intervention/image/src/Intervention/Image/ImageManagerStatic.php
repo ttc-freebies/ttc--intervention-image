@@ -50,8 +50,8 @@ class ImageManagerStatic
      *
      * @param  mixed $data
      *
-     * @return \Intervention\Image\Image
-     * @throws \Intervention\Image\Exception\NotReadableException
+     * @return \Ttc\Freebies\Intervention\Image\Image
+     * @throws \Ttc\Freebies\Intervention\Image\Exception\NotReadableException
      */
     public static function make($data)
     {
@@ -65,7 +65,7 @@ class ImageManagerStatic
      * @param  int   $height
      * @param  mixed $background
      *
-     * @return \Intervention\Image\Image
+     * @return \Ttc\Freebies\Intervention\Image\Image
      */
     public static function canvas($width, $height, $background = null)
     {

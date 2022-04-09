@@ -10,7 +10,7 @@ class ResetCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractCom
     /**
      * Resets given image to its backup state
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

@@ -9,7 +9,7 @@ class EllipseCommand extends \Ttc\Freebies\Intervention\Image\Commands\AbstractC
     /**
      * Draws ellipse on given image
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)

@@ -15,7 +15,7 @@ class PsrResponseCommand extends \Ttc\Freebies\Intervention\Image\Commands\Abstr
      * streams and more "clean" streaming, however drivers has to be updated
      * first.
      *
-     * @param  \Intervention\Image\Image $image
+     * @param \Ttc\Freebies\Intervention\Image\Image $image
      * @return boolean
      */
     public function execute($image)
