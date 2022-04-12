@@ -44,7 +44,7 @@ jobs:
     - name: Patch composer
       run: node prefix.js
 
-    - uses: stefanzweifel/git-auto-commit-action@v4.14.0
+    - uses: stefanzweifel/git-auto-commit-action@v4.14.1
       with:
         commit_message: Commit artifacts...
         branch: ${{ github.head_ref }}
