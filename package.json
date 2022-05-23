@@ -5,7 +5,7 @@
   "description": "Prefixed intervention image for Ttc Library",
   "main": "pre.js",
   "dependencies": {
-    "php-parser": "^3.1.0-beta.4"
+    "php-parser": "3.1.0-beta.4"
   },
   "devDependencies": {},
   "author": "Dimitris Grammatikogiannis",
