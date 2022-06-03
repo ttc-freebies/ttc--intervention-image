@@ -2,11 +2,12 @@
   "name": "ttc/intervention-image",
   "description": "Intervention image prefixed for ttc",
   "license": "MIT",
+  "minimum-stability": "alpha",
   "require-dev": {
     "php": "^7.4|^8.0|^8.1",
     "ext-json": "*"
   },
   "require": {
-    "intervention/image": "^2.7"
+    "intervention/image": "^3"
   }
 }
